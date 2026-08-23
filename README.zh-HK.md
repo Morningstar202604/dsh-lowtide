@@ -61,7 +61,7 @@ lowtide 是 [DeepSeek Harness (dsh)](https://github.com/deepseek-ai/dsh) 的一�
 
 ## lowtide 的介面介紹
 
-**新建工單彈窗。** 四種策略並排擺開，每個下面一句人話說明；輪數、優先權、運行模式跟著任務走，不用回設定頁改全域。任務落地就是「待審」，誰也別想繞過你進佇列。
+**新建工單彈窗。** 四種策略並排擺開，每個下面一句話說明；輪數、優先權、運行模式跟著任務走，不用回設定頁改全域。任務落地就是「待審」，誰也別想繞過你進佇列。
 
 ![new-task-modal](./assets/screenshots/new-task-modal.png)
 
@@ -77,7 +77,7 @@ lowtide 是 [DeepSeek Harness (dsh)](https://github.com/deepseek-ai/dsh) 的一�
 
 ![window-editor](./assets/screenshots/window-editor.png)
 
-**設定頁。** 視窗幾點到幾點、一批跑幾個、單任務最長多久、並行開多少、每天最多花多少、報告留幾份、自治開哪檔、價目表要不要覆寫——全是圖形介面，不用碰設定檔。官方定價規則（含週末全天低谷那條新規）在這頁用人話講了一遍。
+**設定頁。** 視窗幾點到幾點、一批跑幾個、單任務最長多久、並行開多少、每天最多花多少、報告留幾份、自治開哪檔、價目表要不要覆寫——全是圖形介面，不用碰設定檔。官方定價規則（含週末全天低谷那條新規）在這頁也講了。
 
 ![settings](./assets/screenshots/settings.png)
 
