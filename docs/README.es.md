@@ -4,7 +4,7 @@
 
 **Deja tus tareas en la cola antes de acostarte. Despierta con el trabajo terminado.**
 
-[English](../README.md) | [简体中文](../README.zh-CN.md) | [繁體中文](../README.zh-HK.md) | [العربية](./README.ar.md) | [Deutsch](./README.de.md) | **Español** | [Français](./README.fr.md) | [Italiano](./README.it.md) | [한국어](./README.ko.md)
+**Español** | [English](../README.md) | [简体中文](../README.zh-CN.md) | [繁體中文](../README.zh-HK.md) | [العربية](./README.ar.md) | [Deutsch](./README.de.md) | [Français](./README.fr.md) | [Italiano](./README.it.md) | [한국어](./README.ko.md)
 
 </div>
 
@@ -20,11 +20,11 @@
 
 lowtide es un plugin para [DeepSeek Harness (dsh)](https://github.com/deepseek-ai/dsh). El problema que resuelve es sencillo y completamente natural:
 
-Normalmente, cuando queremos que un agente haga algo, el usuario se sienta frente al ordenador, envía una instrucción al agente, espera la respuesta y la revisa a mano. Pero este flujo de trabajo parece olvidar que tenemos mucho tiempo ocioso — y una oportunidad de esquivar los precios punta/valles que cobran algunos modelos.
+Normalmente, cuando quieres que un agente haga algo, te sientas frente al ordenador, envías una instrucción al agente, esperas la respuesta y la revisas a mano. Pero este flujo de trabajo parece olvidar que tienes mucho tiempo ocioso — y una oportunidad de esquivar los precios punta/valle que cobran algunos modelos.
 
 Con lowtide instalado, el día transcurre así: cada vez que durante el día se te ocurre un trabajo, lo lanzas a la cola, le echas un vistazo y lo liberas. Las tareas se acumulan hasta la hora que tú fijas (por ejemplo, después de las 19:00 — cuando DeepSeek aplica el precio valle), y entonces se ejecutan solas. A la mañana siguiente abres el informe: conserva lo que salió bien, devuelve lo que no.
 
-Eso es todo. Pero úsalo durante una semana y tu ritmo de trabajo cambiará de verdad — y no olvides que "el tiempo es oro, la eficiencia es vida"……
+Eso es todo. Pero úsalo durante una semana y tu ritmo de trabajo se ralentiza de verdad — y no olvides que "el tiempo es oro, la eficiencia es vida"……
 
 Algunas capacidades destacadas:
 
@@ -37,15 +37,15 @@ Algunas capacidades destacadas:
 
 **Diez minutos antes de salir del trabajo.** Has terminado de revisar código, así que presentas tres tickets para mañana: una refactorización (iterativa, 3 rondas), un informe semanal (única) y un diseño sobre el que tienes dudas (muestreo, 4 candidatos). Libera todos, apaga el ordenador y vete. Mañana, en tu escritorio, el informe matutino dice: la refactorización está hecha, el informe está redactado y cuatro diseños candidatos están uno al lado del otro, cada uno con su coste escrito.
 
-**Viernes por la noche.** Encola las tareas de toda la semana de una vez: limpieza de dependencias, tests que faltan, scripts de datos. Los fines de semana el precio valle está activo las 24 horas. Tú sales; el plugin trabaja desde casa. El lunes revisas el informe — reintenta lo que falló, fusiona lo que está bien.
+**Viernes por la noche.** Pon en cola las tareas de toda la semana de una vez: limpieza de dependencias, tests que faltan, scripts de datos. Los fines de semana el precio valle está activo las 24 horas. Tú sales; el plugin trabaja desde casa. El lunes revisas el informe — reintenta lo que falló, fusiona lo que está bien.
 
 **Una idea a las 10 de la mañana.** Estás a mitad de una conversación con el agente sobre un bug urgente cuando piensas "oye, actualiza también la documentación". Aparece la tarjeta de interceptación: ejecutarlo ahora cuesta el precio punta, esta noche aproximadamente la mitad — la diferencia está explicada. Haz clic en "poner en cola para fuera de horas punta"; tu borrador sobrevive intacto y vuelves al bug.
 
-**Un servidor siempre encendido.** Tienes una máquina ejecutando dsh 24/7. Cambia al modo L3 totalmente automático y presenta tareas desde cualquier lugar a través de la API (`POST /ds-lowtide/tasks`). Se ejecutan según el horario y escribe el informe. Nadie está vigilando, pero la sandbox, el presupuesto diario y los bloqueos de archivos siguen ahí.
+**Un servidor siempre encendido.** Tienes una máquina ejecutando dsh 24/7. Cambia al modo L3 totalmente automático y presenta tareas desde cualquier lugar a través de la API (`POST /ds-lowtide/tasks`). Las ejecuta según el horario y escribe el informe. Nadie está vigilando, pero la sandbox, el presupuesto diario y los bloqueos de archivos siguen ahí.
 
 **Algo que va a un cliente.** Usa la estrategia de revisión: ejecuta una vez y, a continuación, abre automáticamente una sesión independiente que desmenuza el resultado según tu foco elegido (por ejemplo, "busca errores en las fuentes de datos"). Por la mañana no obtienes un resultado desnudo — obtienes un resultado más una revisión crítica.
 
-**Viviendo en el extranjero.** Estás en San Francisco; las horas punta de DeepSeek son en hora de Pekín, que para ti es la tarde de ayer. La configuración convierte el horario oficial a tu reloj local, con un clic para adoptarlo. Defines las ventanas según tu propio horario y los libros siempre se mantienen alineados con la tabla oficial.
+**Viviendo en el extranjero.** Estás en San Francisco; las horas punta de DeepSeek son en hora de Pekín, que para ti son la tarde y la noche del día anterior. La configuración convierte el horario oficial a tu reloj local, con un clic para adoptarlo. Defines las ventanas según tu propio horario y los libros siempre se mantienen alineados con la tabla oficial.
 
 ## Cómo funciona lowtide
 
@@ -62,15 +62,15 @@ presenta un ticket →  por línea:         →   ejecuciones en sandbox   + din
 
 La vida de una tarea: `pending-review → queued → preflight → running → done / failed / stale / timeout`, más `deferred` (pospuesta) y `dropped` (eliminación suave, restaurable).
 
-El paso dos merece unas palabras extra. La adjudicación es lo que separa a lowtide de un "script totalmente automatizado": **cada tarea debe ser liberada por tu mano antes de ejecutarse** (en L2, liberas todo el lote de una vez, 30 minutos antes de la ventana). La máquina no tiene poder para colarse sola en la cola de ejecución. La ejecución está automatizada; las decisiones no. Por eso podemos decir honestamente que puedes permitirte estar ausente.
+El paso dos es donde lowtide se diferencia de un "script totalmente automatizado": **cada tarea debe ser liberada por tu mano antes de ejecutarse** (en L2, liberas todo el lote de una vez, 30 minutos antes de la ventana). La máquina no puede colarse sola en la cola de ejecución. La ejecución está automatizada; las decisiones no. Por eso puedes permitirte estar ausente con seguridad.
 
 ## Un recorrido por la interfaz de lowtide
 
-**El modal de nueva tarea.** Cuatro estrategias una al lado de la otra, cada una con una pista en lenguaje llano; rondas, prioridad y modo de ejecución viajan con cada tarea — sin volver a la configuración. Las tareas aterrizan como "pending review". Nada te salta para entrar en la cola.
+**El modal de nueva tarea.** Cuatro estrategias una al lado de la otra, cada una con una pista en lenguaje llano; rondas, prioridad y modo de ejecución viajan con cada tarea — sin volver a la configuración. Las tareas aterrizan como "pending review". Nada entra en la cola sin pasar por ti.
 
 ![new-task-modal](../assets/screenshots/new-task-modal.png)
 
-**Opciones avanzadas.** Modelo, esfuerzo de razonamiento, prioridad de 0 a 9, sesión nueva o continuar la anterior, y la lista de archivos bloqueados — todo en un pequeño panel. Los archivos bloqueados merecen una frase: cualquier cosa de la lista recibe una comprobación sha256 antes de la ejecución y, si no coincide con lo que presentaste, la tarea queda obsoleta (`stale`) y se niega a ejecutarse. De lo contrario, el archivo contra el que encolaste podría ser reescrito por otra tarea mientras espera, y esta lo pisotearía a ciegas.
+**Opciones avanzadas.** Modelo, esfuerzo de razonamiento, prioridad de 0 a 9, sesión nueva o continuar la anterior, y la lista de archivos bloqueados — todo en un pequeño panel. Archivos bloqueados, en resumen: cualquier cosa de la lista recibe una comprobación sha256 antes de la ejecución y, si no coincide con lo que presentaste, la tarea queda obsoleta (`stale`) y se niega a ejecutarse. De lo contrario, el archivo contra el que pusiste la tarea en cola podría ser reescrito por otra tarea mientras espera, y esta lo pisotearía a ciegas.
 
 ![advanced-options](../assets/screenshots/advanced-options.png)
 
@@ -86,7 +86,7 @@ El paso dos merece unas palabras extra. La adjudicación es lo que separa a lowt
 
 ![settings](../assets/screenshots/settings.png)
 
-Tres superficies más se esconden en el flujo diario: la **píldora de precio** (cabecera de sesión — ocupado/valle, cuenta atrás, tamaño de la cola; haz clic para editar ventanas), la **tarjeta de interceptación en horas punta** (escribe en hora punta y aparece; la diferencia de precio está explicada; tu borrador sobrevive) y el **informe de ejecución** (el resumen matutino: ahorros primero, anomalías fijadas, candidatos esperando tu elección, copia en Markdown con un clic).
+Tres superficies más se esconden en el flujo diario: la **píldora de precio** (cabecera de sesión — ocupado/inactivo, cuenta atrás, tamaño de la cola; haz clic para editar ventanas), la **tarjeta de interceptación en horas punta** (escribe en hora punta y aparece; la diferencia de precio está explicada; tu borrador sobrevive) y el **informe de ejecución** (el resumen matutino: ahorros primero, anomalías fijadas, candidatos esperando tu elección, copia en Markdown con un clic).
 
 ## Sobre los espacios de trabajo de lowtide
 
@@ -96,11 +96,11 @@ Cada tarea se ejecuta dentro de un espacio de trabajo. Ese único desplegable de
 
 **Con quién se encola.** Las tareas del mismo espacio de trabajo se ejecutan en serie (dos tareas nunca se pelean por un repositorio); los espacios de trabajo distintos se ejecutan en paralelo (límite por defecto 3, ajustable). ¿Quieres rendimiento? Reparte el trabajo no relacionado entre espacios de trabajo. ¿Quieres orden? Mantenlo en uno.
 
-**Cómo se agrupan los informes.** Tanto el dock como el informe matutino se organizan por espacio de trabajo — una vez que tienes volumen real, esta agrupación te salva.
+**Cómo se agrupan los informes.** Tanto el dock como el informe matutino se organizan por espacio de trabajo — una vez que tienes volumen real, esta agrupación compensa.
 
 El desplegable de Espacio de trabajo en el modal de tickets tiene tres fuentes: **Usar el espacio de trabajo actual** (aquel en el que vive tu sesión — el caso habitual), **un espacio de trabajo existente de la lista** (cada uno con su ruta absoluta, para que siempre sepas de qué proyecto se trata), o **Ruta personalizada…** (escríbela a mano). Si elegiste "Continuar anterior" como modo de sesión, también elegirás el espacio de trabajo y la conversación exacta — la tarea reanuda con el contexto de esa conversación.
 
-Nuestro consejo: **un proyecto, un espacio de trabajo — no los mezcles.** La instantánea git y los bloqueos de archivos del preflight están limitados al espacio de trabajo; mezclar proyectos en un mismo espacio de trabajo es una buena manera de confundirte.
+Mi consejo: **un proyecto, un espacio de trabajo — no los mezcles.** La instantánea git y los bloqueos de archivos del preflight están limitados al espacio de trabajo; mezclar proyectos en un mismo espacio de trabajo es una buena manera de confundirte.
 
 ## Cuatro estrategias, y cuándo usar cada una
 
@@ -111,27 +111,27 @@ Nuestro consejo: **un proyecto, un espacio de trabajo — no los mezcles.** La i
 | **Muestreo** | 2–5 sesiones aisladas producen cada una un candidato completo, mostrados lado a lado con sus costes — **tú** eliges; la máquina no hace juicios estéticos | Títulos, ideas, diseños: quieres opciones, no una respuesta | ~N× |
 | **Revisión** | Tras la ejecución, una sesión independiente desmenuza el resultado según tu "foco de revisión" y escribe sus hallazgos | Entregables importantes, una pasada más antes de enviar | ~2× |
 
-## Tres niveles de autonomía: tú decides cuánta cuerda dar
+## Tres niveles de autonomía
 
 - **L1 por tarea**: cada tarea necesita tu ✓ individual. Úsalo al principio, o cuando el repositorio sea valioso.
-- **L2 por lote** (por defecto): las tareas esperan en revisión; una tarjeta de compuerta aparece 30 minutos antes del lote y lo libera todo de una vez; sin liberación, sin ejecución. El conductor diario.
+- **L2 por lote** (por defecto): las tareas esperan en revisión; una tarjeta de compuerta aparece 30 minutos antes del lote y lo libera todo de una vez; sin liberación, sin ejecución. El modo del día a día.
 - **L3 totalmente automático**: las tareas presentadas se ponen en cola inmediatamente y se ejecutan en la sandbox fuera de horas punta, con cero confirmaciones (el cambio pide confirmación dos veces). Pensado para servidores siempre encendidos.
 
 Las tareas individuales pueden anular el nivel global en el modal de tickets.
 
-## Arquitectura: por qué se atreve a trabajar mientras no estás
+## Arquitectura: cómo funciona mientras no estás
 
-Dejar que un agente ejecute trabajos por lotes mientras duermes suena aterrador. lowtide se atreve porque hay cuatro capas debajo.
+Dejar que un agente ejecute trabajos por lotes mientras duermes es mucho pedir. Cuatro capas debajo lo hacen seguro.
 
-**El microkernel Cordis.** dsh se ejecuta sobre el ecosistema de plugins del microkernel Cordis: cada capacidad es un plugin, y los plugins se comunican mediante inyección de servicios en lugar de dependencias directas. La mitad anfitriona de lowtide es un conjunto de servicios Cordis bien comportados — rutas, planificador, máquina de estados — cada uno haciendo su trabajo, registrados en el kernel, arrancando con el harness, desinstalándose limpiamente. En palabras llanas: no somos una piel pegada a dsh; somos un órgano que crece dentro del kernel.
+**El microkernel Cordis.** dsh se ejecuta sobre el ecosistema de plugins del microkernel Cordis: cada capacidad es un plugin, y los plugins se comunican mediante inyección de servicios en lugar de dependencias directas. La mitad anfitriona de lowtide es un conjunto de servicios Cordis bien comportados — rutas, planificador, máquina de estados — cada uno haciendo su trabajo, registrados en el kernel, arrancando con el harness, desinstalándose limpiamente. En palabras llanas: no es una piel pegada a dsh; es un órgano que crece dentro del kernel.
 
 **Dos caras, un artefacto.** La mitad anfitriona (Node.js) posee la planificación, la ejecución y el libro de cuentas; la mitad de navegador (React) posee cada píxel. Una compilación produce ambas — y como la GUI de dsh Desktop se renderiza con web, escritorio y web no necesitan ramas separadas. Mismos bytes, mismo comportamiento.
 
 **Un núcleo independiente de la plataforma.** `lowtide-core` contiene el modelo de ventanas, las tablas de precios, la fórmula de facturación, el resumen de la cola, el libro de cuentas y las matemáticas de las ventanas de lote — todas funciones puras que no tocan ninguna API de dsh, publicadas como paquete propio con sus propias pruebas. El beneficio práctico: el núcleo ha sido martilleado por 44 pruebas unitarias de funciones puras, y si algún día portas lowtide a otro framework de agentes, este paquete se extrae intacto.
 
-**Una cadena de defensa que no confía en nada.** Cinco compuertas de preflight (¿sigue ahí el espacio de trabajo?, ¿se ha movido el HEAD de git?, ¿coinciden los sha256 de los archivos bloqueados?, ¿cabe la ventana?, ¿queda presupuesto?) — si falla cualquiera, la tarea queda obsoleta o se difiere; nunca una ejecución a ciegas. Tres presets de sandbox con aprobación en "never" — desatendido significa que no hay nadie para hacer clic en "permitir", así que lo permitido se decide antes de que empiece la ejecución. El archivo de estado se escribe atómicamente y se revierte a una copia de seguridad si se corrompe. Las rutas HTTP solo aceptan peticiones del mismo origen en esta máquina.
+**Defensa en profundidad.** Cinco compuertas de preflight (¿sigue ahí el espacio de trabajo?, ¿se ha movido el HEAD de git?, ¿coinciden los sha256 de los archivos bloqueados?, ¿cabe la ventana?, ¿queda presupuesto?) — si falla cualquiera, la tarea queda obsoleta o se difiere; nunca una ejecución a ciegas. Tres presets de sandbox con aprobación en "never" — desatendido significa que no hay nadie para hacer clic en "permitir", así que lo permitido se decide antes de que empiece la ejecución. El archivo de estado se escribe atómicamente y se revierte a una copia de seguridad si se corrompe. Las rutas HTTP solo aceptan peticiones del mismo origen en esta máquina.
 
-La sincronización de estado viaja por SSE y cae en un sondeo de 4 segundos — la cola se mueve, la interfaz se mueve con ella.
+La sincronización de estado usa SSE con respaldo de sondeo de 4 segundos — la cola se mueve, la interfaz se mueve con ella.
 
 ## Instalación
 
@@ -167,7 +167,7 @@ Abre dsh después: deberías ver la píldora de precio en la cabecera de la sesi
 
 **La vida en el dock de la cola.** Agrupada por espacio de trabajo en pendientes / terminadas / descartadas. En línea por tarea: ✓ aprobar, ⏸ posponer, ✕ descartar (eliminación suave, restaurable). "Aprobar todo" libera todo; "limpiar terminadas" lo mantiene ordenado (los libros no se ven afectados); "Ejecutar ahora" se salta la espera y lanza un lote de inmediato — así se depura.
 
-**Semántica del tiempo, merece una lectura.** Las horas punta oficiales se juzgan en **hora de Pekín** (DeepSeek factura en hora de Pekín, así que los libros se mantienen alineados; los fines de semana son valle todo el día). Tus ventanas personalizadas y la ventana de ejecución se juzgan en **tu hora local**, con rangos nocturnos y reglas por día de la semana. El final de la ventana detiene los nuevos lanzamientos; las tareas en ejecución nunca se interrumpen.
+**Semántica del tiempo.** Las horas punta oficiales se determinan en **hora de Pekín** (DeepSeek factura en hora de Pekín, así que los libros se mantienen alineados; los fines de semana son valle todo el día). Tus ventanas personalizadas y la ventana de ejecución se determinan en **tu hora local**, con rangos nocturnos y reglas por día de la semana. El final de la ventana detiene los nuevos lanzamientos; las tareas en ejecución nunca se interrumpen.
 
 **El libro de cuentas.** `ledger[YYYY-MM-DD] = { yuan, savedYuan }` — gasto y ahorro, acumulados a diario. El precio mostrado es el precio facturado: una fórmula, auditable hasta el último dígito.
 
@@ -196,7 +196,7 @@ Abre dsh después: deberías ver la píldora de precio en la cabecera de la sesi
 
 ## API HTTP
 
-Prefijo `/ds-lowtide/`, detrás de la valla de confianza de mismo origen + loopback:
+Prefijo `/ds-lowtide/`, detrás de la barrera de confianza de mismo origen + loopback:
 
 | Método | Ruta | Propósito |
 |---|---|---|
@@ -235,7 +235,7 @@ pnpm --filter dsh-lowtide test     # 124 pruebas unitarias del plugin
 pnpm --filter dsh-lowtide exec playwright test   # e2e (necesita dsh web en :3080)
 ```
 
-Diez especificaciones e2e se ejecutan en serie, desde el humo de carga de doble cara hasta el bucle completo entrada→adjudicación→ejecución→informe contra la API real. GitHub Actions está conectado: cada push / PR ejecuta install → build → typecheck → la suite unitaria completa en cuatro entornos.
+Diez especificaciones e2e se ejecutan en serie, desde la prueba de humo de carga de doble cara hasta el bucle completo entrada→adjudicación→ejecución→informe contra la API real. El repositorio incluye un flujo de trabajo de GitHub Actions: cada push / PR ejecuta install → build → typecheck → la suite unitaria completa en cuatro entornos.
 
 ## Seguridad
 
@@ -264,7 +264,7 @@ Falló el preflight: el espacio de trabajo desapareció, la instantánea git se 
 
 ## Limitaciones conocidas y hoja de ruta
 
-- Candidato a versión (v0.1.1), instalado desde el código fuente; e2e necesita una instancia viva de dsh web.
+- Candidato a lanzamiento (v0.1.1), instalado desde el código fuente; e2e necesita una instancia viva de dsh web.
 - El modelo de lote por defecto es `deepseek-v4-flash`; los modelos no oficiales no tienen tabla de precios pública — el libro los marca como "precio desconocido", rellenable en la configuración.
 - El límite por tarea es de 240 minutos; el tiempo agotado cancela y reintenta una vez.
 - Candidatos de hoja de ruta: múltiples ventanas y lotes, grafos de dependencia de tareas, división automática de presupuesto, envío de informes (email/Webhook), alertas de cambio de precio.
@@ -273,9 +273,11 @@ Falló el preflight: el espacio de trabajo desapareció, la instantánea git se 
 
 ```
 dsh-lowtide/
-├── README.md                  Este archivo
+├── README.md                  English
 ├── README.zh-CN.md            Versión en chino simplificado
+├── README.zh-HK.md            Versión en chino tradicional
 ├── assets/screenshots/        Capturas del README
+├── docs/                      README multilingües (ar, de, es, fr, it, ko)
 ├── LICENSE                    MIT
 ├── CHANGELOG.md               Historial de versiones
 ├── CONTRIBUTING.md            Guía de contribución

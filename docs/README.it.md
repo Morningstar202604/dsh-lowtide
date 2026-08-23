@@ -4,7 +4,7 @@
 
 **Metti le tue attività in coda prima di andare a letto. Svegliti con il lavoro fatto.**
 
-[English](../README.md) | [简体中文](../README.zh-CN.md) | [繁體中文](../README.zh-HK.md) | [العربية](./README.ar.md) | [Deutsch](./README.de.md) | [Español](./README.es.md) | [Français](./README.fr.md) | **Italiano** | [한국어](./README.ko.md)
+**Italiano** | [English](../README.md) | [简体中文](../README.zh-CN.md) | [繁體中文](../README.zh-HK.md) | [العربية](./README.ar.md) | [Deutsch](./README.de.md) | [Español](./README.es.md) | [Français](./README.fr.md) | [한국어](./README.ko.md)
 
 </div>
 
@@ -20,7 +20,7 @@
 
 lowtide è un plugin per [DeepSeek Harness (dsh)](https://github.com/deepseek-ai/dsh). Il problema che risolve è semplice e del tutto naturale:
 
-Di solito, quando vogliamo che un agente faccia del lavoro, l'utente resta al computer, invia un'istruzione all'agente, aspetta la risposta e poi la controlla a mano. Ma questo flusso di lavoro sembra dimenticare che abbiamo un sacco di tempo libero — e l'occasione di evitare i prezzi di punta/valle applicati da alcuni modelli.
+Di solito, quando vuoi che un agente faccia del lavoro, resti al computer, invii un'istruzione all'agente, aspetti la risposta e poi la controlli a mano. Ma questo flusso di lavoro sembra dimenticare che hai un sacco di tempo libero — e l'occasione di evitare i prezzi di punta/valle applicati da alcuni modelli.
 
 Con lowtide installato, la giornata funziona così: ogni volta che durante il giorno ti viene in mente un lavoro, gettalo in coda, dagli un'occhiata, rilascialo. Le attività si accumulano fino all'orario che hai impostato (per esempio dopo le 19:00 — è allora che DeepSeek applica i prezzi di valle), poi girano da sole. La mattina dopo apri il rapporto: tieni ciò che è andato bene, rimanda indietro ciò che non è andato.
 
@@ -35,7 +35,7 @@ Alcune capacità concrete:
 
 ## Una giornata normale con un agente potrebbe essere così…
 
-**Dieci minuti prima di uscire dall'ufficio.** Hai finito di rivedere il codice, quindi apri tre ticket per domani: un refactoring (iterativa, 3 round), un rapporto settimanale (singola) e un design di cui non sei sicuro (campionamento, 4 candidati). Rilasciali tutti, spegni, esci. Domani alla scrivania, il rapporto del mattino dice: il refactoring è fatto, il rapporto è abbozzato e quattro design candidati stanno uno accanto all'altro, ognuno con il suo costo scritto.
+**Dieci minuti prima di uscire dall'ufficio.** Hai finito di rivedere il codice, quindi crei tre ticket per domani: un refactoring (iterativa, 3 round), un rapporto settimanale (singola) e un design di cui non sei sicuro (campionamento, 4 candidati). Rilasciali tutti, spegni, esci. Domani alla scrivania, il rapporto del mattino dice: il refactoring è fatto, il rapporto è abbozzato e quattro design candidati stanno uno accanto all'altro, ognuno con il suo costo scritto.
 
 **Venerdì sera.** Metti in coda una settimana di faccende in una volta sola: pulizia delle dipendenze, test mancanti, script per i dati. Nel fine settimana il prezzo di valle vale 24 ore su 24. Tu esci; lui lavora da casa. Lunedì controlli il rapporto — riprova ciò che è fallito, integra ciò che è buono.
 
@@ -45,7 +45,7 @@ Alcune capacità concrete:
 
 **Qualcosa che va a un cliente.** Usa la strategia di revisione: esegui una volta, poi apri automaticamente una sessione indipendente che smonta il risultato secondo il focus scelto (per esempio "cerca errori nelle fonti dei dati"). Al mattino non ottieni un risultato nudo — ottieni un risultato più una revisione critica.
 
-**Vivere all'estero.** Sei a San Francisco; il picco di DeepSeek è in ora di Pechino, che per te significa ieri pomeriggio. Le impostazioni convertono le ore ufficiali nel tuo orologio locale, adozione con un clic. Imposti le finestre secondo i tuoi ritmi e i conti restano sempre allineati alla tabella ufficiale.
+**Vivere all'estero.** Sei a San Francisco; il picco di DeepSeek è in ora di Pechino, che per te significa la sera e la notte del giorno prima. Le impostazioni convertono le ore ufficiali nel tuo orologio locale, adozione con un clic. Imposti le finestre secondo i tuoi ritmi e i conti restano sempre allineati alla tabella ufficiale.
 
 ## Come funziona lowtide
 
@@ -60,9 +60,9 @@ apri un ticket          riga:                 poi esecuzioni in       + denaro r
                         ✕scarta / approva-tutto per finestra
 ```
 
-La vita di un'attività: `pending-review → queued → preflight → running → done / failed / stale / timeout`, più `deferred` (rinviata) e `dropped` (eliminazione morbida, ripristinabile).
+La vita di un'attività: `pending-review → queued → preflight → running → done / failed / stale / timeout`, più `deferred` (rinviata) e `dropped` (eliminazione logica, ripristinabile).
 
-Il secondo passaggio merita qualche parola in più. L'arbitrato è ciò che distingue lowtide da uno "script completamente automatizzato": **ogni attività deve essere rilasciata dalla tua mano prima di essere eseguita** (in L2 rilasci l'intero lotto in una volta, 30 minuti prima della finestra). La macchina non ha alcun potere di infilarsi da sola nella coda di esecuzione. L'esecuzione è automatizzata; le decisioni no. Ecco perché possiamo dire onestamente che puoi permetterti di essere assente.
+Il secondo passaggio è ciò che distingue lowtide da uno "script completamente automatizzato": **ogni attività deve essere rilasciata dalla tua mano prima di essere eseguita** (in L2 rilasci l'intero lotto in una volta, 30 minuti prima della finestra). La macchina non può infilarsi da sola nella coda di esecuzione. L'esecuzione è automatizzata; le decisioni no. Ecco perché puoi permetterti di essere assente.
 
 ## Un giro dell'interfaccia di lowtide
 
@@ -70,7 +70,7 @@ Il secondo passaggio merita qualche parola in più. L'arbitrato è ciò che dist
 
 ![new-task-modal](../assets/screenshots/new-task-modal.png)
 
-**Opzioni avanzate.** Modello, sforzo di ragionamento, priorità da 0 a 9, nuova sessione o continua la precedente, e l'elenco dei file bloccati — tutto in un piccolo pannello. I file bloccati meritano una frase: qualsiasi cosa nell'elenco viene verificata con sha256 prima dell'esecuzione e, se non corrisponde a ciò che hai inserito, l'attività diventa obsoleta (`stale`) e rifiuta di essere eseguita. Altrimenti il file contro cui hai messo in coda potrebbe essere riscritto da un'altra attività mentre aspetti, e questa ci passerebbe sopra alla cieca.
+**Opzioni avanzate.** Modello, sforzo di ragionamento, priorità da 0 a 9, nuova sessione o continua la precedente, e l'elenco dei file bloccati — tutto in un piccolo pannello. File bloccati, in breve: qualsiasi cosa nell'elenco viene verificata con sha256 prima dell'esecuzione e, se non corrisponde a ciò che hai inserito, l'attività diventa obsoleta (`stale`) e rifiuta di essere eseguita. Altrimenti il file contro cui hai messo in coda potrebbe essere riscritto da un'altra attività mentre aspetti, e questa lo calpesterebbe alla cieca.
 
 ![advanced-options](../assets/screenshots/advanced-options.png)
 
@@ -86,7 +86,7 @@ Il secondo passaggio merita qualche parola in più. L'arbitrato è ciò che dist
 
 ![settings](../assets/screenshots/settings.png)
 
-Altre tre superfici si nascondono nel flusso quotidiano: la **pillola del prezzo** (intestazione della sessione — occupato/valle, conto alla rovescia, dimensione della coda; clic per modificare le finestre), la **scheda di intercettazione in punta** (scrivi in punta, appare; la differenza di prezzo è spiegata; la tua bozza sopravvive) e il **rapporto di esecuzione** (il briefing del mattino: risparmi per primi, anomalie fissate, candidati in attesa della tua scelta, copia Markdown con un clic).
+Altre tre superfici si nascondono nel flusso quotidiano: la **pillola del prezzo** (intestazione della sessione — occupato/inattivo, conto alla rovescia, dimensione della coda; clic per modificare le finestre), la **scheda di intercettazione in punta** (scrivi in punta, appare; la differenza di prezzo è spiegata; la tua bozza sopravvive) e il **rapporto di esecuzione** (il briefing del mattino: risparmi per primi, anomalie evidenziate, candidati in attesa della tua scelta, copia Markdown con un clic).
 
 ## Le aree di lavoro di lowtide
 
@@ -96,11 +96,11 @@ Ogni attività viene eseguita all'interno di un'area di lavoro. Quell'unico menu
 
 **Con chi fa la coda.** Le attività nella stessa area di lavoro girano in serie (due attività non litigano mai per un repository); aree di lavoro diverse girano in parallelo (limite predefinito 3, regolabile). Vuoi produttività? Distribuisci il lavoro non correlato su più aree. Vuoi ordine? Tienilo tutto in una.
 
-**Come si raggruppano i rapporti.** Sia il dock che il rapporto del mattino si organizzano per area di lavoro — una volta che hai volume reale, questo raggruppamento ti salva.
+**Come si raggruppano i rapporti.** Sia il dock che il rapporto del mattino si organizzano per area di lavoro — una volta che hai volume reale, questo raggruppamento ripaga.
 
 Il menu Area di lavoro nel modale dei ticket ha tre fonti: **Usa l'area di lavoro corrente** (quella in cui vive la tua sessione — il caso comune), **un'area di lavoro esistente dall'elenco** (ciascuna con il suo percorso assoluto, così sai sempre di quale progetto si tratta), o **Percorso personalizzato…** (scrivilo a mano). Se hai scelto "Continua la precedente" come modalità di sessione, sceglierai anche l'area di lavoro e la conversazione esatta — l'attività riprende con il contesto di quella conversazione.
 
-Il nostro consiglio: **un progetto, un'area di lavoro — non mescolare.** Lo snapshot git e i blocchi dei file nel preflight sono limitati all'area di lavoro; mescolare progetti in un'unica area è un buon modo per confondersi.
+Il mio consiglio: **un progetto, un'area di lavoro — non mescolare.** Lo snapshot git e i blocchi dei file nel preflight sono limitati all'area di lavoro; mescolare progetti in un'unica area è un buon modo per confondersi.
 
 ## Quattro strategie e quando usare quale
 
@@ -111,27 +111,27 @@ Il nostro consiglio: **un progetto, un'area di lavoro — non mescolare.** Lo sn
 | **Campionamento** | 2–5 sessioni isolate producono ciascuna un candidato completo, mostrati affiancati con i costi — **tu** scegli; la macchina non fa giudizi estetici | Titoli, idee, design: vuoi opzioni, non una risposta | ~N× |
 | **Revisione** | Dopo l'esecuzione, una sessione indipendente smonta il risultato secondo il tuo "focus di revisione" e scrive le sue conclusioni | Consegne importanti, un ultimo passaggio prima dell'invio | ~2× |
 
-## Tre livelli di autonomia: decidi tu quanta corda dare
+## Tre livelli di autonomia
 
 - **L1 per attività**: ogni attività ha bisogno del tuo ✓ individuale. Usalo all'inizio, o quando il repository è prezioso.
-- **L2 per lotto** (predefinito): le attività aspettano in revisione; una scheda cancello appare 30 minuti prima del lotto e rilascia tutto in una volta; nessun rilascio, nessuna esecuzione. Il pilota quotidiano.
+- **L2 per lotto** (predefinito): le attività aspettano in revisione; una scheda cancello appare 30 minuti prima del lotto e rilascia tutto in una volta; nessun rilascio, nessuna esecuzione. Lo strumento di tutti i giorni.
 - **L3 completamente automatico**: le attività inserite si mettono subito in coda e girano nella sandbox in valle, zero conferme (il passaggio chiede due volte). Costruito per server sempre accesi.
 
 Le singole attività possono sovrascrivere il livello globale nel modale dei ticket.
 
-## Architettura: perché osa lavorare mentre non ci sei
+## Architettura: come funziona mentre non ci sei
 
-Lasciare che un agente esegua lotti mentre dormi sembra spaventoso. lowtide osa perché sotto ci sono quattro strati.
+Lasciare che un agente esegua lotti mentre dormi è chiedere molto. Quattro strati sotto lo rendono sicuro.
 
-**Il microkernel Cordis.** dsh gira sull'ecosistema di plugin del microkernel Cordis: ogni capacità è un plugin e i plugin comunicano tramite iniezione di servizi piuttosto che dipendenza diretta. La metà host di lowtide è un insieme di servizi Cordis ben educati — route, scheduler, macchina a stati — ognuno fa il suo lavoro, registrato nel kernel, che parte con l'harness e si disinstalla pulitamente. In parole povere: non siamo una pelle incollata su dsh; siamo un organo coltivato dentro il kernel.
+**Il microkernel Cordis.** dsh gira sull'ecosistema di plugin del microkernel Cordis: ogni capacità è un plugin e i plugin comunicano tramite iniezione di servizi piuttosto che dipendenza diretta. La metà host di lowtide è un insieme di servizi Cordis ben educati — route, scheduler, macchina a stati — ognuno fa il suo lavoro, registrato nel kernel, che parte con l'harness e si disinstalla pulitamente. In parole povere: non è una pelle incollata su dsh; è un organo coltivato dentro il kernel.
 
 **Due facce, un artefatto.** La metà host (Node.js) possiede pianificazione, esecuzione e libro mastro; la metà browser (React) possiede ogni pixel. Una build produce entrambe — e poiché la GUI di dsh Desktop è essa stessa resa in web, desktop e web non hanno bisogno di rami separati. Stessi byte, stesso comportamento.
 
 **Un core indipendente dalla piattaforma.** `lowtide-core` contiene il modello delle finestre, le tabelle dei prezzi, la formula di fatturazione, il riepilogo della coda, il libro mastro e la matematica delle finestre di lotto — tutte funzioni pure che non toccano nessuna API dsh, pubblicate come pacchetto autonomo con i propri test. Il vantaggio pratico: il core è stato martellato da 44 test unitari di funzioni pure e, se un giorno porti lowtide su un altro framework di agenti, questo pacchetto si estrae intatto.
 
-**Una catena di difesa che non si fida di nulla.** Cinque cancelli di preflight (l'area di lavoro c'è ancora, il HEAD git si è mosso, gli sha256 dei file bloccati corrispondono, la finestra ci sta, resta budget) — se uno fallisce, l'attività diventa obsoleta o viene rinviata; mai un'esecuzione alla cieca. Tre preset di sandbox con approvazione su "never" — non presidiato significa che non c'è nessuno a cliccare "consenti", quindi ciò che è permesso si decide prima dell'inizio dell'esecuzione. Il file di stato viene scritto atomicamente e torna a un backup se corrotto. Le route HTTP accettano solo richieste same-origin da questa macchina.
+**Difesa in profondità.** Cinque cancelli di preflight (l'area di lavoro c'è ancora, il HEAD git si è mosso, gli sha256 dei file bloccati corrispondono, il task entra nella finestra, resta budget) — se uno fallisce, l'attività diventa obsoleta o viene rinviata; mai un'esecuzione alla cieca. Tre preset di sandbox con approvazione su "never" — non presidiato significa che non c'è nessuno a cliccare "consenti", quindi ciò che è permesso si decide prima dell'inizio dell'esecuzione. Il file di stato viene scritto atomicamente e torna a un backup se corrotto. Le route HTTP accettano solo richieste same-origin da questa macchina.
 
-La sincronizzazione di stato viaggia via SSE e ripiega su un polling di 4 secondi — la coda si muove, l'interfaccia si muove con essa.
+La sincronizzazione di stato usa SSE con un polling di ripiego di 4 secondi — la coda si muove, l'interfaccia si muove con essa.
 
 ## Installazione
 
@@ -159,15 +159,15 @@ npx @deepseek-ai/dsh@0.1.0-rc.7 plugin --profile web add ./packages/dsh       # 
 pnpm --filter dsh-lowtide dev
 ```
 
-Dopo apri dsh: dovresti vedere la pillola del prezzo nell'intestazione della sessione e il dock della coda accanto all'area di input. In caso contrario, controlla il FAQ qui sotto.
+Dopo apri dsh: dovresti vedere la pillola del prezzo nell'intestazione della sessione e il dock della coda accanto all'area di input. In caso contrario, controlla le FAQ qui sotto.
 
 ## Uso quotidiano
 
 **Tre modi per inserire un'attività.** La scheda di intercettazione (scrivi in punta, un clic, la tua bozza diventa il ticket invariato); il modale dei ticket ("Nuovo" accanto all'area di input — prompt, strategia, round, priorità); o l'API (`POST /ds-lowtide/tasks`, collegala alla tua automazione).
 
-**La vita nel dock della coda.** Raggruppata per area di lavoro in in attesa / completate / scartate. In linea per attività: ✓ approva, ⏸ rinvia, ✕ scarta (eliminazione morbida, ripristinabile). "Approva tutto" rilascia tutto; "pulisci completate" tiene tutto in ordine (i conti non sono toccati); "Esegui ora" salta l'attesa e lancia subito un lotto — è così che fai debug.
+**La vita nel dock della coda.** Raggruppata per area di lavoro in attesa / completate / scartate. In linea per attività: ✓ approva, ⏸ rinvia, ✕ scarta (eliminazione logica, ripristinabile). "Approva tutto" rilascia tutto; "pulisci completate" tiene tutto in ordine (i conti non sono toccati); "Esegui ora" salta l'attesa e lancia subito un lotto — è così che fai debug.
 
-**Semantica del tempo, vale una lettura.** Le ore di punta ufficiali sono giudicate in **ora di Pechino** (DeepSeek fattura in ora di Pechino, quindi i conti restano allineati; il fine settimana è valle tutto il giorno). Le tue finestre personalizzate e la finestra di esecuzione sono giudicate in **ora locale**, con intervalli notturni e regole per giorno della settimana. La fine della finestra ferma i nuovi avvii; le attività in corso non vengono mai interrotte.
+**Semantica del tempo.** Le ore di punta ufficiali sono giudicate in **ora di Pechino** (DeepSeek fattura in ora di Pechino, quindi i conti restano allineati; il fine settimana è valle tutto il giorno). Le tue finestre personalizzate e la finestra di esecuzione sono giudicate in **ora locale**, con intervalli notturni e regole per giorno della settimana. La fine della finestra ferma i nuovi avvii; le attività in corso non vengono mai interrotte.
 
 **Il libro mastro.** `ledger[YYYY-MM-DD] = { yuan, savedYuan }` — spesa e risparmio, accumulati ogni giorno. Il prezzo mostrato è il prezzo fatturato: una formula, verificabile fino all'ultima cifra.
 
@@ -235,12 +235,12 @@ pnpm --filter dsh-lowtide test     # 124 test unitari del plugin
 pnpm --filter dsh-lowtide exec playwright test   # e2e (richiede dsh web su :3080)
 ```
 
-Dieci specifiche e2e girano in serie, dallo smoke di caricamento a due facce fino al ciclo completo inserimento→arbitrato→esecuzione→rapporto contro la vera API. GitHub Actions è collegato: ogni push / PR esegue install → build → typecheck → l'intera suite unitaria su quattro ambienti.
+Dieci specifiche e2e girano in serie, dallo smoke di caricamento a due facce fino al ciclo completo inserimento→arbitrato→esecuzione→rapporto contro la vera API. Il repository include un workflow GitHub Actions: ogni push / PR esegue install → build → typecheck → l'intera suite unitaria su quattro ambienti.
 
 ## Sicurezza
 
 - Le route accettano solo loopback + same-origin; **non esporre la porta 3080 a internet pubblico** — usa un tunnel SSH o un proxy inverso autenticato.
-- La sandbox di Windows è di livello mitigazione; Linux/macOS impongono pienamente. Per l'uso non presidiato, impila la whitelist dei file e il budget giornaliero.
+- La sandbox di Windows è di livello mitigazione; Linux/macOS applicano la protezione in pieno. Per l'uso non presidiato, impila la whitelist dei file e il budget giornaliero.
 - Il passaggio a L3 completamente automatico chiede due volte.
 - Il file di stato contiene prompt completi e percorsi; tratta i backup di conseguenza.
 - Segnala le vulnerabilità in privato tramite [SECURITY.md](../SECURITY.md).
@@ -273,9 +273,11 @@ Preflight fallito: area di lavoro sparita, snapshot git spostato, un file blocca
 
 ```
 dsh-lowtide/
-├── README.md                  Questo file
+├── README.md                  English
 ├── README.zh-CN.md            Versione in cinese semplificato
+├── README.zh-HK.md            Versione in cinese tradizionale
 ├── assets/screenshots/        Screenshot del README
+├── docs/                      README multilingue (ar, de, es, fr, it, ko)
 ├── LICENSE                    MIT
 ├── CHANGELOG.md               Cronologia delle versioni
 ├── CONTRIBUTING.md            Guida alla contribuzione

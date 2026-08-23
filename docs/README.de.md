@@ -2,9 +2,9 @@
 
 # dsh-lowtide
 
-**Leg deine Aufgaben vor dem Schlafengehen in die Warteschlange. Wach auf mit erledigter Arbeit.**
+**Legen Sie Ihre Aufgaben vor dem Schlafengehen in die Warteschlange. Wachen Sie mit erledigter Arbeit auf.**
 
-[English](../README.md) | [简体中文](../README.zh-CN.md) | [繁體中文](../README.zh-HK.md) | [العربية](./README.ar.md) | **Deutsch** | [Español](./README.es.md) | [Français](./README.fr.md) | [Italiano](./README.it.md) | [한국어](./README.ko.md)
+**Deutsch** | [English](../README.md) | [简体中文](../README.zh-CN.md) | [繁體中文](../README.zh-HK.md) | [العربية](./README.ar.md) | [Español](./README.es.md) | [Français](./README.fr.md) | [Italiano](./README.it.md) | [한국어](./README.ko.md)
 
 </div>
 
@@ -20,13 +20,13 @@
 
 lowtide ist ein Plugin für [DeepSeek Harness (dsh)](https://github.com/deepseek-ai/dsh). Das Problem, das es löst, ist schlicht und völlig natürlich:
 
-Normalerweise sitzt der Nutzer vor dem Computer, schickt dem Agenten eine Anweisung, wartet auf die Antwort und prüft sie dann von Hand. Doch dieser Arbeitsablauf vergisst offenbar, dass wir reichlich Leerlauf haben — und eine Chance, die Spitzen-/Nebenzeiten-Preise zu umgehen, die einige Modelle verlangen.
+Normalerweise, wenn Sie möchten, dass ein Agent etwas erledigt, sitzen Sie vor dem Computer, schicken dem Agenten eine Anweisung, warten auf die Antwort und prüfen sie dann von Hand. Doch dieser Arbeitsablauf vergisst offenbar, dass Sie reichlich Leerlauf haben — und eine Chance, die Spitzen-/Nebenzeiten-Preise zu umgehen, die einige Modelle verlangen.
 
 Mit installiertem lowtide läuft der Tag so ab: Wann immer Ihnen tagsüber eine Aufgabe einfällt, werfen Sie sie in die Warteschlange, werfen einen Blick darauf, geben sie frei. Die Aufgaben sammeln sich bis zu der von Ihnen festgelegten Zeit (z. B. nach 19 Uhr — dann gilt bei DeepSeek der Nebenzeiten-Preis), und laufen dann von selbst. Am nächsten Morgen öffnen Sie den Bericht: behalten, was gut war, zurückschicken, was nicht.
 
 Das ist alles. Aber nutzen Sie es eine Woche lang, und Ihr Arbeitsrhythmus verlangsamt sich spürbar — und vergessen Sie nicht: „Zeit ist Geld, Effizienz ist Leben"……
 
-Einige harte Fähigkeiten:
+Einige zentrale Fähigkeiten:
 
 - Vier Ausführungsstrategien: einzeln, iterativ, Stichprobe, Überprüfung — von „ein Durchgang genügt" bis „fünf Kandidaten laufen lassen, und ich wähle"
 - 168 Unit-Tests + 10 End-to-End-Spezifikationen, CI grün auf ubuntu / windows × node 22 / 24
@@ -37,15 +37,15 @@ Einige harte Fähigkeiten:
 
 **Zehn Minuten vor Feierabend.** Sie haben das Code-Review beendet und legen drei Tickets für morgen an: eine Refaktorierung (iterativ, 3 Runden), einen Wochenbericht (einzeln) und ein Design, bei dem Sie unsicher sind (Stichprobe, 4 Kandidaten). Geben Sie alle frei, schalten Sie ab, gehen Sie. Morgen an Ihrem Schreibtisch sagt der Morgenbericht: Die Refaktorierung ist fertig, der Bericht ist entworfen, und vier Design-Kandidaten stehen nebeneinander, jeder mit seinen Kosten.
 
-**Freitagabend.** Stellen Sie eine Woche Hausaufgaben auf einmal in die Warteschlange: Abhängigkeitsbereinigung, fehlende Tests, Datenskripte. Am Wochenende gilt rund um die Uhr der Talpreis. Sie gehen aus; es arbeitet zu Hause. Montag prüfen Sie den Bericht — wiederholen, was fehlschlug, übernehmen, was gut ist.
+**Freitagabend.** Stellen Sie eine Woche voller Aufgaben auf einmal in die Warteschlange: Abhängigkeitsbereinigung, fehlende Tests, Datenskripte. Am Wochenende gilt rund um die Uhr der Talpreis. Sie gehen aus; es arbeitet zu Hause. Montag prüfen Sie den Bericht — wiederholen, was fehlschlug, übernehmen, was gut ist.
 
 **Eine Eingebung um 10 Uhr morgens.** Sie sind mitten in einem Gespräch mit dem Agenten über einen dringenden Bug, als Sie denken: „Ach, aktualisiere auch die Doku." Die Abfang-Karte erscheint: Jetzt ausführen kostet den Spitzenpreis, heute Nacht etwa die Hälfte — der Unterschied wird erklärt. Klicken Sie auf „Für Nebenzeiten einreihen"; Ihr Entwurf bleibt unangetastet, und Sie kehren zum Bug zurück.
 
-**Ein immer laufender Server.** Sie haben eine Maschine, die dsh 24/7 betreibt. Wechseln Sie in den Modus L3 vollautomatisch, und legen Sie von überall Aufgaben über die API ab (`POST /ds-lowtide/tasks`). Es führt sie planmäßig aus und schreibt den Bericht. Niemand schaut zu, aber die Sandbox, das Tagesbudget und die Dateisperren sind weiterhin da.
+**Ein immer laufender Server.** Sie haben eine Maschine, die dsh 24/7 betreibt. Wechseln Sie in den vollautomatischen Modus L3, und legen Sie von überall Aufgaben über die API ab (`POST /ds-lowtide/tasks`). Es führt sie planmäßig aus und schreibt den Bericht. Niemand schaut zu, aber die Sandbox, das Tagesbudget und die Dateisperren sind weiterhin da.
 
 **Etwas, das zu einem Kunden geht.** Nutzen Sie die Überprüfungsstrategie: einmal ausführen, dann automatisch eine unabhängige Sitzung öffnen, die das Ergebnis anhand Ihres gewählten Fokus zerpflückt (z. B. „Suche Fehler in den Datenquellen"). Am Morgen erhalten Sie kein nacktes Ergebnis — Sie erhalten ein Ergebnis plus eine kritische Überprüfung.
 
-**Im Ausland leben.** Sie sind in San Francisco; DeepSeeks Spitzenzeit ist Pekinger Zeit, was für Sie gestern Nachmittag bedeutet. Die Einstellungen konvertieren die offiziellen Stunden in Ihre lokale Uhr, Übernahme mit einem Klick. Sie legen Fenster nach Ihrem eigenen Zeitplan fest, und die Bücher bleiben immer mit der offiziellen Tabelle ausgerichtet.
+**Im Ausland leben.** Sie sind in San Francisco; DeepSeeks Spitzenzeit ist Pekinger Zeit, was für Sie den Vorabend und die Nacht davor bedeutet. Die Einstellungen konvertieren die offiziellen Stunden in Ihre lokale Uhr, Übernahme mit einem Klick. Sie legen Fenster nach Ihrem eigenen Zeitplan fest, und die Bücher bleiben immer mit der offiziellen Tabelle ausgerichtet.
 
 ## So funktioniert lowtide
 
@@ -62,15 +62,15 @@ an (4 Strategien)       ✓freigeben ⏸aufschieben  ein Stapel pro Fenster  Aus
 
 Der Lebenszyklus einer Aufgabe: `pending-review → queued → preflight → running → done / failed / stale / timeout`, zusätzlich `deferred` (aufgeschoben) und `dropped` (weiches Löschen, wiederherstellbar).
 
-Schritt zwei verdient ein paar zusätzliche Worte. Die Prüfung ist es, die lowtide von einem „vollautomatisierten Skript" unterscheidet: **Jede Aufgabe muss von Ihrer Hand freigegeben werden, bevor sie läuft** (in L2 geben Sie den ganzen Stapel auf einmal frei, 30 Minuten vor dem Fenster). Die Maschine hat keine Macht, sich selbst in die Ausführungswarteschlange zu schieben. Die Ausführung ist automatisiert; Entscheidungen sind es nicht. Deshalb können wir ehrlich sagen, dass Sie es sich leisten können, abwesend zu sein.
+Schritt zwei ist das, was lowtide von einem „vollautomatisierten Skript" unterscheidet: **Jede Aufgabe muss von Ihrer Hand freigegeben werden, bevor sie läuft** (in L2 geben Sie den ganzen Stapel auf einmal frei, 30 Minuten vor dem Fenster). Die Maschine kann sich nicht selbst in die Ausführungswarteschlange schieben. Die Ausführung ist automatisiert; Entscheidungen sind es nicht. Deshalb können Sie es sich leisten, abwesend zu sein.
 
 ## Ein Rundgang durch die lowtide-Oberfläche
 
-**Das Modal für neue Aufgaben.** Vier Strategien nebeneinander, jede mit einem Hinweis in klarer Sprache; Runden, Priorität und Ausführungsmodus reisen mit jeder Aufgabe mit — kein Umweg über die Einstellungen. Aufgaben landen als „pending review". Nichts umgeht Sie, um in die Warteschlange zu gelangen.
+**Das Modal für neue Aufgaben.** Vier Strategien nebeneinander, jede mit einem Hinweis in klarer Sprache; Runden, Priorität und Ausführungsmodus werden mit jeder Aufgabe mitgeführt — kein Umweg über die Einstellungen. Aufgaben landen als „pending review". Nichts umgeht Sie, um in die Warteschlange zu gelangen.
 
 ![new-task-modal](../assets/screenshots/new-task-modal.png)
 
-**Erweiterte Optionen.** Modell, Denkaufwand, Priorität von 0 bis 9, neue Sitzung oder vorherige fortsetzen, und die Liste der gesperrten Dateien — alles in einem kleinen Bereich. Die gesperrten Dateien verdienen einen Satz: Alles auf der Liste wird vor der Ausführung per sha256 geprüft; stimmt es nicht mit dem überein, was Sie eingereicht haben, wird die Aufgabe veraltet (`stale`) und weigert sich zu laufen. Andernfalls könnte die Datei, gegen die Sie eingereiht haben, während des Wartens von einer anderen Aufgabe überschrieben werden, und diese würde blind darüber hinweg trampeln.
+**Erweiterte Optionen.** Modell, Denkaufwand, Priorität von 0 bis 9, neue Sitzung oder vorherige fortsetzen, und die Liste der gesperrten Dateien — alles in einem kleinen Bereich. Gesperrte Dateien, kurz: Alles auf der Liste wird vor der Ausführung per sha256 geprüft; stimmt es nicht mit dem überein, was Sie eingereicht haben, wird die Aufgabe veraltet (`stale`) und weigert sich zu laufen. Andernfalls könnte die Datei, auf die sich Ihre Aufgabe bezieht, während des Wartens von einer anderen Aufgabe überschrieben werden, und diese würde blind darüber hinweg trampeln.
 
 ![advanced-options](../assets/screenshots/advanced-options.png)
 
@@ -86,7 +86,7 @@ Schritt zwei verdient ein paar zusätzliche Worte. Die Prüfung ist es, die lowt
 
 ![settings](../assets/screenshots/settings.png)
 
-Drei weitere Oberflächen verstecken sich im Tagesablauf: die **Preis-Pille** (Sitzungs-Header — beschäftigt/Tal, Countdown, Warteschlangengröße; Klick zum Bearbeiten der Fenster), die **Abfang-Karte zu Spitzenzeiten** (tippen in der Spitzenzeit, sie erscheint; der Preisunterschied wird erklärt; Ihr Entwurf überlebt) und der **Ausführungsbericht** (die Morgen-Briefing: Ersparnisse zuerst, Anomalien angeheftet, Kandidaten warten auf Ihre Wahl, Markdown-Kopie mit einem Klick).
+Drei weitere Oberflächen verstecken sich im Tagesablauf: die **Preis-Pille** (Sitzungs-Header — beschäftigt/inaktiv, Countdown, Warteschlangengröße; Klick zum Bearbeiten der Fenster), die **Abfang-Karte zu Spitzenzeiten** (tippen in der Spitzenzeit, sie erscheint; der Preisunterschied wird erklärt; Ihr Entwurf überlebt) und der **Ausführungsbericht** (das Morgen-Briefing: Ersparnisse zuerst, Anomalien angeheftet, Kandidaten warten auf Ihre Wahl, Markdown-Kopie mit einem Klick).
 
 ## Über die Arbeitsbereiche von lowtide
 
@@ -96,22 +96,22 @@ Jede Aufgabe läuft in einem Arbeitsbereich. Dieses eine Dropdown entscheidet ü
 
 **Mit wem es sich einreiht.** Aufgaben im selben Arbeitsbereich laufen seriell (zwei Aufgaben streiten sich nie um ein Repository); verschiedene Arbeitsbereiche laufen parallel (Standard-Limit 3, einstellbar). Wollen Sie Durchsatz? Verteilen Sie unabhängige Arbeit auf mehrere Arbeitsbereiche. Wollen Sie Ordnung? Behalten Sie alles in einem.
 
-**Wie Berichte gruppieren.** Sowohl das Dock als auch der Morgenbericht organisieren sich nach Arbeitsbereich — sobald Sie echtes Volumen haben, rettet diese Gruppierung Sie.
+**Wie Berichte sich gruppieren.** Sowohl das Dock als auch der Morgenbericht organisieren sich nach Arbeitsbereich — sobald Sie echtes Volumen haben, zahlt sich diese Gruppierung aus.
 
 Das Dropdown Arbeitsbereich im Ticket-Modal hat drei Quellen: **Aktuellen Arbeitsbereich verwenden** (in dem Ihre Sitzung lebt — der häufige Fall), **einen vorhandenen Arbeitsbereich aus der Liste** (jeder mit seinem absoluten Pfad, damit Sie immer wissen, um welches Projekt es sich handelt), oder **Benutzerdefinierter Pfad…** (von Hand eintippen). Wenn Sie „Vorherige fortsetzen" als Sitzungsmodus gewählt haben, wählen Sie auch den Arbeitsbereich und das genaue Gespräch — die Aufgabe nimmt den Kontext dieses Gesprächs wieder auf.
 
-Unser Rat: **ein Projekt, ein Arbeitsbereich — mischen Sie nicht.** Der Git-Snapshot und die Dateisperren im Preflight sind auf den Arbeitsbereich begrenzt; Projekte in einem Arbeitsbereich zu mischen ist ein guter Weg, sich selbst zu verwirren.
+Mein Rat: **ein Projekt, ein Arbeitsbereich — mischen Sie nicht.** Der Git-Snapshot und die Dateisperren im Preflight sind auf den Arbeitsbereich begrenzt; Projekte in einem Arbeitsbereich zu mischen ist ein guter Weg, sich selbst zu verwirren.
 
 ## Vier Strategien und wann man welche nutzt
 
-| Strategie | Was sie tut | Wann sie heranziehen | Kosten |
+| Strategie | Was sie tut | Wann man sie heranzieht | Kosten |
 |---|---|---|---|
 | **Einzeln** | Ein Durchgang, fertig | Einfache, klar definierte Aufgaben | 1× |
 | **Iterativ** | 2–5 Runden in einer Sitzung, jede verbessert die vorherige durch Ihre „Iterationslinse"; endet früh, wenn zwei Runden ähnlich genug sind | Arbeit, die Politur braucht: Schreiben, Pläne, Code | ~N× |
 | **Stichprobe** | 2–5 isolierte Sitzungen produzieren jeweils einen vollständigen Kandidaten, nebeneinander mit Kosten angezeigt — **Sie** wählen; die Maschine fällt kein ästhetisches Urteil | Titel, Ideen, Designs: Sie wollen Optionen, keine Antwort | ~N× |
-| **Überprüfung** | Nach der Ausführung zerpflückt eine unabhängige Sitzung das Ergebnis anhand Ihres „Überprüfungsfokus" und schreibt ihre Befunde auf | Wichtige Liefergegenstände, ein letzter Durchgang vor dem Versand | ~2× |
+| **Überprüfung** | Nach der Ausführung zerpflückt eine unabhängige Sitzung das Ergebnis anhand Ihres „Überprüfungsfokus" und schreibt ihre Befunde auf | Wichtige Ergebnisse, ein letzter Durchgang vor dem Versand | ~2× |
 
-## Drei Autonomiestufen: Sie entscheiden, wie viel Leine Sie geben
+## Drei Autonomiestufen
 
 - **L1 pro Aufgabe**: jede Aufgabe braucht Ihr individuelles ✓. Nutzen Sie es am Anfang oder wenn das Repository kostbar ist.
 - **L2 pro Stapel** (Standard): Aufgaben warten in der Prüfung; eine Tor-Karte erscheint 30 Minuten vor dem Stapel und gibt alles auf einmal frei; keine Freigabe, keine Ausführung. Der tägliche Begleiter.
@@ -119,19 +119,19 @@ Unser Rat: **ein Projekt, ein Arbeitsbereich — mischen Sie nicht.** Der Git-Sn
 
 Einzelne Aufgaben können die globale Stufe im Ticket-Modal übersteuern.
 
-## Architektur: warum es sich traut, zu arbeiten, während Sie weg sind
+## Architektur: wie es funktioniert, während Sie weg sind
 
-Einen Agenten Stapeljobs ausführen zu lassen, während Sie schlafen, klingt beängstigend. lowtide traut sich, weil vier Schichten darunter liegen.
+Einen Agenten Stapeljobs ausführen zu lassen, während Sie schlafen, ist viel verlangt. Vier Schichten darunter machen es sicher.
 
-**Der Cordis-Mikrokern.** dsh läuft auf dem Plugin-Ökosystem des Cordis-Mikrokerns: jede Fähigkeit ist ein Plugin, und Plugins kommunizieren über Service-Injektion statt direkter Abhängigkeit. Die Host-Hälfte von lowtide ist eine Reihe wohlerzogener Cordis-Dienste — Routen, Scheduler, Zustandsmaschine — jeder erledigt seine Aufgabe, im Kern registriert, startet mit dem Harness, deinstalliert sich sauber. In klaren Worten: Wir sind keine aufgeklebte Haut auf dsh; wir sind ein Organ, das im Kern wächst.
+**Der Cordis-Mikrokern.** dsh läuft auf dem Plugin-Ökosystem des Cordis-Mikrokerns: jede Fähigkeit ist ein Plugin, und Plugins kommunizieren über Service-Injektion statt direkter Abhängigkeit. Die Host-Hälfte von lowtide ist eine Reihe wohlerzogener Cordis-Dienste — Routen, Scheduler, Zustandsmaschine — jeder erledigt seine Aufgabe, im Kern registriert, startet mit dem Harness, deinstalliert sich sauber. In klaren Worten: Es ist keine aufgeklebte Haut auf dsh; es ist ein Organ, das im Kern wächst.
 
 **Zwei Gesichter, ein Artefakt.** Die Host-Hälfte (Node.js) besitzt Planung, Ausführung und Hauptbuch; die Browser-Hälfte (React) besitzt jedes Pixel. Ein Build produziert beide — und da die GUI von dsh Desktop selbst im Web gerendert wird, brauchen Desktop und Web keine getrennten Zweige. Gleiche Bytes, gleiches Verhalten.
 
 **Ein plattformunabhängiger Kern.** `lowtide-core` enthält das Fenstermodell, Preistabellen, die Abrechnungsformel, die Warteschlangen-Übersicht, das Hauptbuch und die Stapel-Fenster-Mathematik — alles reine Funktionen, die keine dsh-APIs berühren, veröffentlicht als eigenes Paket mit eigenen Tests. Der praktische Nutzen: Der Kern wurde von 44 Pure-Function-Unit-Tests gehämmert, und wenn Sie lowtide jemals auf ein anderes Agenten-Framework portieren, lässt sich dieses Paket intakt herauslösen.
 
-**Eine Verteidigungskette, die nichts vertraut.** Fünf Preflight-Tore (ist der Arbeitsbereich noch da, hat sich der Git-HEAD bewegt, stimmen die sha256 der gesperrten Dateien, passt das Fenster, ist Budget übrig) — scheitert eines, wird die Aufgabe veraltet oder aufgeschoben; niemals ein blinder Lauf. Drei Sandbox-Voreinstellungen mit Genehmigung auf „never" — unbeaufsichtigt bedeutet, dass niemand da ist, um auf „erlauben" zu klicken, also wird das Erlaubte vor Beginn der Ausführung entschieden. Die Zustandsdatei wird atomar geschrieben und rollt bei Korruption auf ein Backup zurück. HTTP-Routen akzeptieren nur Same-Origin-Anfragen von dieser Maschine.
+**Verteidigung in der Tiefe.** Fünf Preflight-Tore (ist der Arbeitsbereich noch da, hat sich der Git-HEAD bewegt, stimmen die sha256 der gesperrten Dateien, passt das Fenster, ist Budget übrig) — scheitert eines, wird die Aufgabe veraltet oder aufgeschoben; niemals ein blinder Lauf. Drei Sandbox-Voreinstellungen mit Genehmigung auf „never" — unbeaufsichtigt bedeutet, dass niemand da ist, um auf „erlauben" zu klicken, also wird das Erlaubte vor Beginn der Ausführung entschieden. Die Zustandsdatei wird atomar geschrieben und rollt bei Korruption auf ein Backup zurück. HTTP-Routen akzeptieren nur Same-Origin-Anfragen von dieser Maschine.
 
-Die Zustandssynchronisierung läuft über SSE und fällt auf 4-Sekunden-Polling zurück — die Warteschlange bewegt sich, die Oberfläche bewegt sich mit.
+Die Zustandssynchronisierung nutzt SSE mit 4-Sekunden-Polling als Ausweichlösung — die Warteschlange bewegt sich, die Oberfläche bewegt sich mit.
 
 ## Installation
 
@@ -167,7 +167,7 @@ pnpm --filter dsh-lowtide dev
 
 **Leben im Queue-Dock.** Gruppiert nach Arbeitsbereich in ausstehend / erledigt / verworfen. Inline pro Aufgabe: ✓ freigeben, ⏸ aufschieben, ✕ verwerfen (weiches Löschen, wiederherstellbar). „Alles freigeben" gibt alles frei; „Erledigte bereinigen" hält es ordentlich (die Bücher bleiben unberührt); „Jetzt ausführen" überspringt das Warten und startet sofort einen Stapel — so debuggen Sie.
 
-**Zeitsemantik, einen Blick wert.** Offizielle Spitzenzeiten werden in **Pekinger Zeit** bewertet (DeepSeek rechnet in Pekinger Zeit ab, damit bleiben die Bücher ausgerichtet; am Wochenende gilt den ganzen Tag Talpreis). Ihre benutzerdefinierten Fenster und das Ausführungsfenster werden in **Ihrer lokalen Zeit** bewertet, mit Über-Mitternacht-Bereichen und Regeln pro Wochentag. Fensterende stoppt neue Starts; laufende Aufgaben werden nie unterbrochen.
+**Zeitsemantik.** Offizielle Spitzenzeiten werden in **Pekinger Zeit** bewertet (DeepSeek rechnet in Pekinger Zeit ab, damit bleiben die Bücher ausgerichtet; am Wochenende gilt den ganzen Tag Talpreis). Ihre benutzerdefinierten Fenster und das Ausführungsfenster werden in **Ihrer lokalen Zeit** bewertet, mit Über-Mitternacht-Bereichen und Regeln pro Wochentag. Fensterende stoppt neue Starts; laufende Aufgaben werden nie unterbrochen.
 
 **Das Hauptbuch.** `ledger[YYYY-MM-DD] = { yuan, savedYuan }` — Ausgaben und Ersparnisse, täglich akkumuliert. Der angezeigte Preis ist der abgerechnete Preis: eine Formel, bis zur letzten Ziffer prüfbar.
 
@@ -196,7 +196,7 @@ pnpm --filter dsh-lowtide dev
 
 ## HTTP-API
 
-Präfix `/ds-lowtide/`, hinter dem Same-Origin- und Loopback-Vertrauenszaun:
+Präfix `/ds-lowtide/`, hinter der Same-Origin- und Loopback-Vertrauensgrenze:
 
 | Methode | Pfad | Zweck |
 |---|---|---|
@@ -213,7 +213,7 @@ Präfix `/ds-lowtide/`, hinter dem Same-Origin- und Loopback-Vertrauenszaun:
 
 ## Berechtigungs-Voreinstellungen
 
-| preset | sandbox | approval |
+| preset | sandbox | Genehmigung |
 |---|---|---|
 | `lt-readonly` | read-only | never |
 | `lt-standard` | workspace-write | never |
@@ -235,7 +235,7 @@ pnpm --filter dsh-lowtide test     # 124 Plugin-Unit-Tests
 pnpm --filter dsh-lowtide exec playwright test   # e2e (benötigt dsh web auf :3080)
 ```
 
-Zehn e2e-Spezifikationen laufen seriell, vom Zwei-Gesichter-Lade-Smoke bis zur vollständigen Annahme→Prüfung→Ausführung→Bericht-Schleife gegen die echte API. GitHub Actions ist angebunden: Jeder Push / PR führt install → build → typecheck → die vollständige Unit-Suite auf vier Umgebungen aus.
+Zehn e2e-Spezifikationen laufen seriell, vom Zwei-Gesichter-Lade-Smoke bis zur vollständigen Annahme→Prüfung→Ausführung→Bericht-Schleife gegen die echte API. Das Repository enthält einen GitHub-Actions-Workflow: Jeder Push / PR führt install, build, typecheck sowie die vollständige Unit-Suite auf vier Umgebungen aus.
 
 ## Sicherheit
 
@@ -273,9 +273,11 @@ Preflight fehlgeschlagen: Arbeitsbereich verschwunden, Git-Snapshot bewegt, eine
 
 ```
 dsh-lowtide/
-├── README.md                  Diese Datei
+├── README.md                  English
 ├── README.zh-CN.md            Version auf vereinfachtem Chinesisch
+├── README.zh-HK.md            Version auf traditionellem Chinesisch
 ├── assets/screenshots/        README-Screenshots
+├── docs/                      Mehrsprachige READMEs (ar, de, es, fr, it, ko)
 ├── LICENSE                    MIT
 ├── CHANGELOG.md               Versionsverlauf
 ├── CONTRIBUTING.md            Beitragsleitfaden

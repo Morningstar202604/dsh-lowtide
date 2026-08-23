@@ -4,7 +4,7 @@
 
 **Déposez vos tâches dans la file avant de dormir. Réveillez-vous avec le travail terminé.**
 
-[English](../README.md) | [简体中文](../README.zh-CN.md) | [繁體中文](../README.zh-HK.md) | [العربية](./README.ar.md) | [Deutsch](./README.de.md) | [Español](./README.es.md) | **Français** | [Italiano](./README.it.md) | [한국어](./README.ko.md)
+**Français** | [English](../README.md) | [简体中文](../README.zh-CN.md) | [繁體中文](../README.zh-HK.md) | [العربية](./README.ar.md) | [Deutsch](./README.de.md) | [Español](./README.es.md) | [Italiano](./README.it.md) | [한국어](./README.ko.md)
 
 </div>
 
@@ -20,7 +20,7 @@
 
 lowtide est un plugin pour [DeepSeek Harness (dsh)](https://github.com/deepseek-ai/dsh). Le problème qu'il résout est simple et parfaitement naturel :
 
-D'habitude, quand on veut qu'un agent fasse du travail, l'utilisateur reste devant l'ordinateur, envoie une instruction à l'agent, attend la réponse, puis la relit à la main. Mais ce flux de travail semble oublier que nous avons beaucoup de temps libre — et une occasion d'éviter les tarifs pleins/creux facturés par certains modèles.
+D'habitude, quand vous voulez qu'un agent fasse du travail, vous restez devant l'ordinateur, envoyez une instruction à l'agent, attendez la réponse, puis la relisez à la main. Mais ce flux de travail semble oublier que vous avez beaucoup de temps libre — et une occasion d'éviter les tarifs pleins/creux facturés par certains modèles.
 
 Avec lowtide installé, la journée se déroule ainsi : dès qu'un travail vous traverse l'esprit pendant la journée, jetez-le dans la file, jetez-y un œil, libérez-le. Les tâches s'accumulent jusqu'à l'heure que vous avez définie (disons après 19 h — c'est là que DeepSeek applique ses tarifs creux), puis s'exécutent toutes seules. Le lendemain matin, vous ouvrez le rapport : gardez ce qui a bien marché, renvoyez ce qui n'a pas marché.
 
@@ -45,7 +45,7 @@ Quelques capacités remarquables :
 
 **Quelque chose qui part chez un client.** Utilisez la stratégie de révision : exécutez une fois, puis ouvrez automatiquement une session indépendante qui démonte le résultat selon le focus choisi (par exemple « cherche des erreurs de source de données »). Le matin, vous n'obtenez pas un résultat nu — vous obtenez un résultat plus une révision critique.
 
-**Vivre à l'étranger.** Vous êtes à San Francisco ; le pic de DeepSeek est à l'heure de Pékin, ce qui pour vous correspond à hier après-midi. Les paramètres convertissent les heures officielles en heure locale, adoption en un clic. Vous définissez vos fenêtres selon votre propre emploi du temps, et les comptes restent toujours alignés sur le barème officiel.
+**Vivre à l'étranger.** Vous êtes à San Francisco ; le pic de DeepSeek est à l'heure de Pékin, ce qui pour vous correspond à la soirée et à la nuit de la veille. Les paramètres convertissent les heures officielles en heure locale, adoption en un clic. Vous définissez vos fenêtres selon votre propre emploi du temps, et les comptes restent toujours alignés sur le barème officiel.
 
 ## Comment fonctionne lowtide
 
@@ -62,7 +62,7 @@ déposez un ticket      ligne par ligne :     exécutions en sandbox   + argent 
 
 La vie d'une tâche : `pending-review → queued → preflight → running → done / failed / stale / timeout`, plus `deferred` (différée) et `dropped` (suppression douce, restaurable).
 
-L'étape deux mérite quelques mots de plus. L'arbitrage est ce qui distingue lowtide d'un « script entièrement automatisé » : **chaque tâche doit être libérée par votre main avant de s'exécuter** (en L2, vous libérez tout le lot d'un coup, 30 minutes avant la fenêtre). La machine n'a aucun pouvoir pour se glisser d'elle-même dans la file d'exécution. L'exécution est automatisée ; les décisions ne le sont pas. C'est pourquoi nous pouvons honnêtement dire que vous pouvez vous permettre d'être absent.
+L'étape deux est ce qui distingue lowtide d'un « script entièrement automatisé » : **chaque tâche doit être libérée par votre main avant de s'exécuter** (en L2, vous libérez tout le lot d'un coup, 30 minutes avant la fenêtre). La machine ne peut pas se glisser d'elle-même dans la file d'exécution. L'exécution est automatisée ; les décisions ne le sont pas. C'est pourquoi vous pouvez vous permettre d'être absent en toute sécurité.
 
 ## Visite guidée de l'interface lowtide
 
@@ -70,11 +70,11 @@ L'étape deux mérite quelques mots de plus. L'arbitrage est ce qui distingue lo
 
 ![new-task-modal](../assets/screenshots/new-task-modal.png)
 
-**Options avancées.** Modèle, effort de raisonnement, priorité de 0 à 9, nouvelle session ou continuation de la précédente, et la liste des fichiers verrouillés — le tout dans un petit panneau. Les fichiers verrouillés méritent une phrase : tout élément de la liste est vérifié par sha256 avant l'exécution, et s'il ne correspond pas à ce que vous avez déposé, la tâche devient obsolète (`stale`) et refuse de s'exécuter. Sinon, le fichier contre lequel vous avez mis en file pourrait être réécrit par une autre tâche pendant l'attente, et celle-ci lui passerait dessus à l'aveugle.
+**Options avancées.** Modèle, effort de raisonnement, priorité de 0 à 9, nouvelle session ou continuation de la précédente, et la liste des fichiers verrouillés — le tout dans un petit panneau. Fichiers verrouillés, en bref : tout élément de la liste est vérifié par sha256 avant l'exécution, et s'il ne correspond pas à ce que vous avez déposé, la tâche devient obsolète (`stale`) et refuse de s'exécuter. Sinon, le fichier contre lequel vous avez mis en file pourrait être réécrit par une autre tâche pendant l'attente, et celle-ci lui passerait dessus à l'aveugle.
 
 ![advanced-options](../assets/screenshots/advanced-options.png)
 
-**Choisissez n'importe quel modèle.** L'exécution par lots utilise par défaut le `deepseek-v4-flash` officiel, mais chaque tâche peut choisir son propre modèle — tout ce qui est connecté à votre Harness apparaît dans la liste déroulante, groupé par fournisseur. Les fournisseurs privés fonctionnent aussi. Les modèles non officiels n'ont pas de barème public, donc le grand livre dit honnêtement « prix inconnu » ; ajoutez une surcharge de prix dans les paramètres si vous voulez une comptabilité exacte.
+**Choisissez n'importe quel modèle.** L'exécution par lots utilise par défaut le `deepseek-v4-flash` officiel, mais chaque tâche peut choisir son propre modèle — tout ce qui est connecté à votre Harness apparaît dans la liste déroulante, groupé par fournisseur. Les fournisseurs privés fonctionnent aussi. Les modèles non officiels n'ont pas de barème public, donc le grand livre dit honnêtement « prix inconnu » ; ajoutez une dérogation de prix dans les paramètres si vous voulez une comptabilité exacte.
 
 ![model-picker](../assets/screenshots/model-picker.png)
 
@@ -82,11 +82,11 @@ L'étape deux mérite quelques mots de plus. L'arbitrage est ce qui distingue lo
 
 ![window-editor](../assets/screenshots/window-editor.png)
 
-**La page des paramètres.** Heures de fenêtre, tâches par lot, plafond de durée par tâche, concurrence, budget quotidien, historique des rapports, niveau d'autonomie, surcharges de prix — tout est graphique, aucun fichier de configuration. Les règles tarifaires officielles (y compris le nouveau creux de tout le week-end) sont expliquées en langage humain sur la même page.
+**La page des paramètres.** Heures de fenêtre, tâches par lot, plafond de durée par tâche, concurrence, budget quotidien, historique des rapports, niveau d'autonomie, dérogations de prix — tout est graphique, aucun fichier de configuration. Les règles tarifaires officielles (y compris le nouveau creux de tout le week-end) sont expliquées en langage humain sur la même page.
 
 ![settings](../assets/screenshots/settings.png)
 
-Trois autres surfaces se cachent dans le flux quotidien : la **pilule de prix** (en-tête de session — occupé/creux, compte à rebours, taille de la file ; cliquez pour éditer les fenêtres), la **carte d'interception en heures pleines** (tapez en heure pleine, elle apparaît ; la différence de prix est expliquée ; votre brouillon survit) et le **rapport d'exécution** (le briefing du matin : économies d'abord, anomalies épinglées, candidats attendant votre choix, copie Markdown en un clic).
+Trois autres surfaces se cachent dans le flux quotidien : la **pilule de prix** (en-tête de session — occupé/inactif, compte à rebours, taille de la file ; cliquez pour éditer les fenêtres), la **carte d'interception en heures pleines** (tapez en heure pleine, elle apparaît ; la différence de prix est expliquée ; votre brouillon survit) et le **rapport d'exécution** (le briefing du matin : économies d'abord, anomalies épinglées, candidats attendant votre choix, copie Markdown en un clic).
 
 ## À propos des espaces de travail lowtide
 
@@ -96,11 +96,11 @@ Chaque tâche s'exécute dans un espace de travail. Cette unique liste déroulan
 
 **Avec qui il fait la queue.** Les tâches du même espace de travail s'exécutent en série (deux tâches ne se battent jamais pour un dépôt) ; les espaces de travail différents s'exécutent en parallèle (plafond par défaut 3, réglable). Vous voulez du débit ? Répartissez le travail sans rapport entre plusieurs espaces. Vous voulez de l'ordre ? Gardez tout dans un seul.
 
-**Comment les rapports se regroupent.** Le dock comme le rapport du matin s'organisent par espace de travail — une fois que vous avez du vrai volume, ce regroupement vous sauve.
+**Comment les rapports se regroupent.** Le dock comme le rapport du matin s'organisent par espace de travail — une fois que vous avez du vrai volume, ce regroupement porte ses fruits.
 
 La liste Espace de travail dans la fenêtre modale a trois sources : **Utiliser l'espace de travail actuel** (celui où vit votre session — le cas courant), **un espace de travail existant de la liste** (chacun avec son chemin absolu, pour toujours savoir de quel projet il s'agit), ou **Chemin personnalisé…** (à taper à la main). Si vous avez choisi « Continuer la précédente » comme mode de session, vous choisirez aussi l'espace de travail et la conversation exacte — la tâche reprend avec le contexte de cette conversation.
 
-Notre conseil : **un projet, un espace de travail — ne mélangez pas.** L'instantané git et les verrous de fichiers du preflight sont limités à l'espace de travail ; mélanger des projets dans un même espace est un bon moyen de se perdre.
+Mon conseil : **un projet, un espace de travail — ne mélangez pas.** L'instantané git et les verrous de fichiers du preflight sont limités à l'espace de travail ; mélanger des projets dans un même espace est un bon moyen de se perdre.
 
 ## Quatre stratégies, et quand utiliser laquelle
 
@@ -111,27 +111,27 @@ Notre conseil : **un projet, un espace de travail — ne mélangez pas.** L'inst
 | **Échantillonnage** | 2–5 sessions isolées produisent chacune un candidat complet, affichés côte à côte avec leurs coûts — **vous** choisissez ; la machine ne fait aucun jugement esthétique | Titres, idées, designs : vous voulez des options, pas une réponse | ~N× |
 | **Révision** | Après l'exécution, une session indépendante démonte le résultat selon votre « focus de révision » et rédige ses conclusions | Livrables importants, une dernière passe avant l'envoi | ~2× |
 
-## Trois niveaux d'autonomie : vous décidez de la longueur de la laisse
+## Trois niveaux d'autonomie
 
 - **L1 par tâche** : chaque tâche a besoin de votre ✓ individuel. À utiliser au début, ou quand le dépôt est précieux.
 - **L2 par lot** (par défaut) : les tâches attendent en révision ; une carte de porte apparaît 30 minutes avant le lot et libère tout d'un coup ; pas de libération, pas d'exécution. Le pilier du quotidien.
 - **L3 entièrement automatique** : les tâches déposées se mettent en file immédiatement et s'exécutent en sandbox pendant les heures creuses, zéro confirmation (le changement demande deux confirmations). Conçu pour les serveurs toujours allumés.
 
-Les tâches individuelles peuvent surcharger le niveau global dans la fenêtre modale.
+Les tâches individuelles peuvent outrepasser le niveau global dans la fenêtre modale.
 
-## Architecture : pourquoi il ose travailler pendant votre absence
+## Architecture : comment il fonctionne pendant votre absence
 
-Laisser un agent exécuter des lots pendant que vous dormez semble effrayant. lowtide ose parce que quatre couches le soutiennent.
+Laisser un agent exécuter des lots pendant que vous dormez est beaucoup demander. Quatre couches en dessous rendent cela sûr.
 
-**Le micro-noyau Cordis.** dsh tourne sur l'écosystème de plugins du micro-noyau Cordis : chaque capacité est un plugin, et les plugins communiquent par injection de services plutôt que par dépendance directe. La moitié hôte de lowtide est un ensemble de services Cordis bien élevés — routes, planificateur, machine à états — chacun faisant son travail, enregistrés dans le noyau, démarrant avec le harness, se désinstallant proprement. En clair : nous ne sommes pas une peau collée sur dsh ; nous sommes un organe cultivé à l'intérieur du noyau.
+**Le micro-noyau Cordis.** dsh tourne sur l'écosystème de plugins du micro-noyau Cordis : chaque capacité est un plugin, et les plugins communiquent par injection de services plutôt que par dépendance directe. La moitié hôte de lowtide est un ensemble de services Cordis bien disciplinés — routes, planificateur, machine à états — chacun faisant son travail, enregistrés dans le noyau, démarrant avec le harness, se désinstallant proprement. En clair : ce n'est pas une peau collée sur dsh ; c'est un organe cultivé à l'intérieur du noyau.
 
 **Deux faces, un artefact.** La moitié hôte (Node.js) possède la planification, l'exécution et le grand livre ; la moitié navigateur (React) possède chaque pixel. Une compilation produit les deux — et comme l'interface de dsh Desktop est elle-même rendue en web, le bureau et le web n'ont pas besoin de branches séparées. Mêmes octets, même comportement.
 
 **Un noyau indépendant de la plateforme.** `lowtide-core` contient le modèle de fenêtres, les barèmes de prix, la formule de facturation, le digest de la file, le grand livre et les calculs de fenêtres de lot — toutes fonctions pures qui ne touchent aucune API dsh, publiées dans leur propre paquet avec leurs propres tests. Le bénéfice pratique : le noyau a été martelé par 44 tests unitaires de fonctions pures, et si vous portez un jour lowtide vers un autre framework d'agents, ce paquet s'extrait intact.
 
-**Une chaîne de défense qui ne fait confiance à rien.** Cinq portes de preflight (l'espace de travail est-il toujours là, le HEAD git a-t-il bougé, les sha256 des fichiers verrouillés correspondent-ils, la fenêtre convient-elle, reste-t-il du budget) — si l'une échoue, la tâche devient obsolète ou diffère ; jamais d'exécution à l'aveugle. Trois presets de sandbox avec approbation sur « never » — en mode non surveillé, personne n'est là pour cliquer sur « autoriser », donc ce qui est permis est décidé avant le début de l'exécution. Le fichier d'état est écrit atomiquement et revient à une sauvegarde en cas de corruption. Les routes HTTP n'acceptent que les requêtes même-origine de cette machine.
+**Défense en profondeur.** Cinq portes de preflight (l'espace de travail est-il toujours là, le HEAD git a-t-il bougé, les sha256 des fichiers verrouillés correspondent-ils, la fenêtre convient-elle, reste-t-il du budget) — si l'une échoue, la tâche devient obsolète ou diffère ; jamais d'exécution à l'aveugle. Trois presets de sandbox avec approbation sur « never » — en mode non surveillé, personne n'est là pour cliquer sur « autoriser », donc ce qui est permis est décidé avant le début de l'exécution. Le fichier d'état est écrit atomiquement et revient à une sauvegarde en cas de corruption. Les routes HTTP n'acceptent que les requêtes même-origine de cette machine.
 
-La synchronisation d'état passe par SSE et retombe sur un sondage de 4 secondes — la file bouge, l'interface bouge avec elle.
+La synchronisation d'état utilise SSE avec un sondage de secours de 4 secondes — la file bouge, l'interface bouge avec elle.
 
 ## Installation
 
@@ -159,15 +159,15 @@ npx @deepseek-ai/dsh@0.1.0-rc.7 plugin --profile web add ./packages/dsh       # 
 pnpm --filter dsh-lowtide dev
 ```
 
-Ouvrez dsh ensuite : vous devriez voir la pilule de prix dans l'en-tête de session et le dock de la file à côté de la zone de saisie. Sinon, consultez le FAQ ci-dessous.
+Ouvrez dsh ensuite : vous devriez voir la pilule de prix dans l'en-tête de session et le dock de la file à côté de la zone de saisie. Sinon, consultez la FAQ ci-dessous.
 
 ## Utilisation au quotidien
 
 **Trois façons de déposer une tâche.** La carte d'interception (tapez en heure pleine, un clic, votre brouillon devient le ticket inchangé) ; la fenêtre modale de tickets (« Nouveau » à côté de la zone de saisie — prompt, stratégie, rondes, priorité) ; ou l'API (`POST /ds-lowtide/tasks`, à brancher sur votre propre automatisation).
 
-**La vie dans le dock de la file.** Groupée par espace de travail en en attente / terminées / abandonnées. En ligne par tâche : ✓ approuver, ⏸ différer, ✕ abandonner (suppression douce, restaurable). « Tout approuver » libère tout ; « nettoyer les terminées » garde l'ordre (les comptes ne sont pas affectés) ; « Exécuter maintenant » saute l'attente et lance un lot immédiatement — c'est comme ça qu'on débogue.
+**La vie dans le dock de la file.** Groupée par espace de travail : en attente / terminées / abandonnées. En ligne par tâche : ✓ approuver, ⏸ différer, ✕ abandonner (suppression douce, restaurable). « Tout approuver » libère tout ; « nettoyer les terminées » garde l'ordre (les comptes ne sont pas affectés) ; « Exécuter maintenant » saute l'attente et lance un lot immédiatement — c'est comme ça qu'on débogue.
 
-**Sémantique du temps, à lire une fois.** Les heures de pointe officielles sont jugées en **heure de Pékin** (DeepSeek facture à l'heure de Pékin, donc les comptes restent alignés ; les week-ends sont en creux toute la journée). Vos fenêtres personnalisées et la fenêtre d'exécution sont jugées en **heure locale**, avec plages nocturnes et règles par jour de semaine. La fin de fenêtre arrête les nouveaux lancements ; les tâches en cours ne sont jamais interrompues.
+**Sémantique du temps.** Les heures de pointe officielles sont déterminées en **heure de Pékin** (DeepSeek facture à l'heure de Pékin, donc les comptes restent alignés ; les week-ends sont en creux toute la journée). Vos fenêtres personnalisées et la fenêtre d'exécution sont déterminées en **heure locale**, avec plages nocturnes et règles par jour de semaine. La fin de fenêtre arrête les nouveaux lancements ; les tâches en cours ne sont jamais interrompues.
 
 **Le grand livre.** `ledger[YYYY-MM-DD] = { yuan, savedYuan }` — dépense et économies, cumulées chaque jour. Le prix affiché est le prix facturé : une formule, vérifiable au chiffre près.
 
@@ -177,7 +177,7 @@ Ouvrez dsh ensuite : vous devriez voir la pilule de prix dans l'en-tête de sess
 
 | Champ | Type | Défaut | Notes |
 |---|---|---|---|
-| `autonomy` | `'l1'\|'l2'\|'l3'` | `l2` | Niveau d'autonomie ; surcharge par tâche dans la fenêtre modale |
+| `autonomy` | `'l1'\|'l2'\|'l3'` | `l2` | Niveau d'autonomie ; dérogation par tâche dans la fenêtre modale |
 | `batch.window` | `"HH:MM-HH:MM"` | `19:00-23:30` | Fenêtre d'exécution en creux (fuseau local) |
 | `batch.tz` | fuseau IANA | système | Fuseau de la fenêtre d'exécution (vide = local) |
 | `batch.gateLeadMin` | minutes | `30` | Anticipation de la porte du lot |
@@ -192,11 +192,11 @@ Ouvrez dsh ensuite : vous devriez voir la pilule de prix dans l'en-tête de sess
 | `windows[].days` | tableau `1..7` | tous les jours | Jours ISO (1 = lun … 7 = dim) |
 | `windows[].tz` | fuseau IANA | système | Fuseau par fenêtre |
 | `windows[].multiplier` | nombre | `1` | Multiplicateur de prix creux pour les fenêtres personnalisées |
-| `prices[model].{peak,off}.{input,inputCached,output}` | ¥/1M | officiel | Surcharges du barème |
+| `prices[model].{peak,off}.{input,inputCached,output}` | ¥/1M | officiel | Dérogations au barème |
 
 ## API HTTP
 
-Préfixe `/ds-lowtide/`, derrière la clôture de confiance même-origine + loopback :
+Préfixe `/ds-lowtide/`, derrière la barrière de confiance même-origine + loopback :
 
 | Méthode | Chemin | Objet |
 |---|---|---|
@@ -235,7 +235,7 @@ pnpm --filter dsh-lowtide test     # 124 tests unitaires du plugin
 pnpm --filter dsh-lowtide exec playwright test   # e2e (nécessite dsh web sur :3080)
 ```
 
-Dix spécifications e2e s'exécutent en série, du smoke de chargement double face jusqu'à la boucle complète entrée→arbitrage→exécution→rapport contre la vraie API. GitHub Actions est branché : chaque push / PR exécute install → build → typecheck → la suite unitaire complète sur quatre environnements.
+Dix spécifications e2e s'exécutent en série, du test de fumée de chargement double face jusqu'à la boucle complète entrée→arbitrage→exécution→rapport contre la vraie API. Le dépôt inclut un workflow GitHub Actions : chaque push / PR exécute install → build → typecheck → la suite unitaire complète sur quatre environnements.
 
 ## Sécurité
 
@@ -264,7 +264,7 @@ Preflight échoué : espace de travail disparu, instantané git déplacé, fichi
 
 ## Limitations connues et feuille de route
 
-- Candidat à la sortie (v0.1.1), installé depuis les sources ; e2e nécessite une instance dsh web vivante.
+- Candidat à la version (v0.1.1), installé depuis les sources ; e2e nécessite une instance dsh web vivante.
 - Le modèle de lot par défaut est `deepseek-v4-flash` ; les modèles non officiels n'ont pas de barème public — le grand livre les marque « prix inconnu », remplissable dans les paramètres.
 - Plafond par tâche de 240 minutes ; le délai dépassé annule et réessaie une fois.
 - Candidats de la feuille de route : fenêtres et lots multiples, graphes de dépendance de tâches, répartition automatique du budget, envoi de rapports (email/Webhook), alertes de changement de prix.
@@ -273,9 +273,11 @@ Preflight échoué : espace de travail disparu, instantané git déplacé, fichi
 
 ```
 dsh-lowtide/
-├── README.md                  Ce fichier
+├── README.md                  English
 ├── README.zh-CN.md            Version en chinois simplifié
+├── README.zh-HK.md            Version en chinois traditionnel
 ├── assets/screenshots/        Captures du README
+├── docs/                      README multilingues (ar, de, es, fr, it, ko)
 ├── LICENSE                    MIT
 ├── CHANGELOG.md               Historique des versions
 ├── CONTRIBUTING.md            Guide de contribution

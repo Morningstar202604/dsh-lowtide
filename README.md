@@ -18,13 +18,13 @@
 
 lowtide is a plugin for [DeepSeek Harness (dsh)](https://github.com/deepseek-ai/dsh). The problem it solves is plain and perfectly natural:
 
-Usually, when we want an agent to do some work, the user sits at the computer, sends the agent an instruction, waits for the reply, and then reviews it by hand. But this workflow seems to forget that we have plenty of idle time — and a chance to dodge the peak/off-peak pricing that some models charge.
+Usually, when you want an agent to do some work, you sit at the computer, send the agent an instruction, wait for the reply, and then review it by hand. But this workflow seems to forget that you have plenty of idle time — and a chance to dodge the peak/off-peak pricing that some models charge.
 
 With lowtide installed, the day goes like this: whenever a job crosses your mind during the day, toss it in the queue, glance at it, release it. The tasks pile up until the time you set (say, after 7 PM — that's when DeepSeek is at valley pricing), then run by themselves. Next morning you open the report: keep what went well, send back what didn't.
 
-That's all it is. But use it for a week and your working rhythm genuinely slows down — and don't forget, "time is money, efficiency is life"……
+That's all it is. But use it for a week and your working rhythm genuinely slows down — and don't forget, "time is money, efficiency is life"...
 
-A few hardcore capabilities:
+A few key capabilities:
 
 - Four execution strategies: single, iterative, sampling, review — from "one pass is enough" to "run five candidates and I'll pick"
 - 168 unit tests + 10 end-to-end specs, CI green across ubuntu / windows × node 22 / 24
@@ -41,9 +41,9 @@ A few hardcore capabilities:
 
 **An always-on server.** You've got a machine running dsh 24/7. Switch to L3 full-auto, then file tasks from anywhere through the API (`POST /ds-lowtide/tasks`). It runs them on schedule and writes the report. Nobody's watching, but the sandbox, the daily budget, and the file locks are all still there.
 
-**Something going to a client.** Use the review strategy: run once, then automatically open an independent session that tears the result apart through your chosen focus (say, "hunt for data-source errors"). In the morning you don't get a bare result — you get a result plus a critical review.
+**Deliverables for a client.** Use the review strategy: run once, then automatically open an independent session that tears the result apart through your chosen focus (say, "hunt for data-source errors"). In the morning you don't get a bare result — you get a result plus a critical review.
 
-**Living abroad.** You're in San Francisco; DeepSeek's peak is Beijing time, which for you is yesterday afternoon. Settings converts the official hours to your local clock, one click to adopt. You set windows by your own schedule, and the books always stay aligned with the official table.
+**Living abroad.** You're in San Francisco; DeepSeek's peak is Beijing time, which for you lands in the evening and night before. Settings converts the official hours to your local clock, one click to adopt. You set windows by your own schedule, and the books always stay aligned with the official table.
 
 ## How lowtide works
 
@@ -59,15 +59,15 @@ ticket (4 strategies) ✓approve ⏸defer     one batch per window     + money s
 
 A task's life: `pending-review → queued → preflight → running → done / failed / stale / timeout`, plus `deferred` (postponed) and `dropped` (soft-deleted, restorable).
 
-Step two deserves a few extra words. Adjudication is what separates lowtide from a "fully automated script": **every task must be released by your hand before it runs** (in L2, you release the whole batch at once, 30 minutes before the window). The machine has no power to move itself into the run queue. Execution is automated; decisions are not. That's why we can honestly say you can afford to be absent.
+Step two is where lowtide differs from a "fully automated script": **every task must be released by your hand before it runs** (in L2, you release the whole batch at once, 30 minutes before the window). The machine cannot move itself into the run queue. Execution is automated; decisions are not. That's why you can safely be absent.
 
 ## A tour of the lowtide interface
 
-**The new-task modal.** Four strategies side by side, each with a plain-language hint; rounds, priority, and run mode ride along per task — no trip back to settings. Tasks land as "pending review". Nothing bypasses you into the queue.
+**The new-task modal.** Four strategies side by side, each with a plain-language hint; rounds, priority, and run mode ride along per task — no trip back to settings. Tasks land as "pending review". Nothing enters the queue without passing you.
 
 ![new-task-modal](./assets/screenshots/new-task-modal.png)
 
-**Advanced options.** Model, reasoning effort, priority from 0 to 9, fresh session or continue-previous, and the locked-files list — all in one small pane. The locked files deserve a sentence: anything on the list gets sha256-checked before execution, and if it doesn't match what you filed, the task goes stale and refuses to run. Otherwise the file you queued against could be rewritten by another task while waiting, and this one would blindly stomp on it.
+**Advanced options.** Model, reasoning effort, priority from 0 to 9, fresh session or continue-previous, and the locked-files list — all in one small pane. Locked files, briefly: anything on the list gets sha256-checked before execution, and if it doesn't match what you filed, the task goes stale and refuses to run. Otherwise the file you queued against could be rewritten by another task while waiting, and this one would blindly stomp on it.
 
 ![advanced-options](./assets/screenshots/advanced-options.png)
 
@@ -83,7 +83,7 @@ Step two deserves a few extra words. Adjudication is what separates lowtide from
 
 ![settings](./assets/screenshots/settings.png)
 
-Three more surfaces hide in the daily flow: the **price pill** (session header — busy/idle, countdown, queue size; click it to edit windows), the **peak-hours intercept card** (type at peak, it appears; the price difference is spelled out; your draft survives), and the **execution report** (the morning briefing: savings first, anomalies pinned, candidates awaiting your pick, one-click Markdown copy).
+Three more pieces of UI appear in daily use: the **price pill** (session header — busy/idle, countdown, queue size; click it to edit windows), the **peak-hours intercept card** (type at peak, it appears; the price difference is spelled out; your draft survives), and the **execution report** (the morning briefing: savings first, anomalies pinned, candidates awaiting your pick, one-click Markdown copy).
 
 ## About lowtide workspaces
 
@@ -93,11 +93,11 @@ Every task runs inside a workspace. That single dropdown decides three things.
 
 **Who it queues with.** Tasks in the same workspace run serially (two tasks never fight over one repo); different workspaces run in parallel (default cap 3, adjustable). Want throughput? Spread unrelated work across workspaces. Want order? Keep it in one.
 
-**How reports group.** Both the dock and the morning report organize by workspace — once you have real volume, this grouping saves you.
+**How reports group.** Both the dock and the morning report organize by workspace — once you have real volume, this grouping pays off.
 
 The Workspace dropdown in the ticket modal has three sources: **Use current workspace** (whatever your session lives in — the common case), **an existing workspace from the list** (each shown with its absolute path, so you always know which project it is), or **Custom path…** (type one by hand). If you picked "Continue previous" as the session mode, you'll also choose the workspace and the exact conversation — the task resumes with that conversation's context.
 
-Our advice: **one project, one workspace — don't mix.** The git snapshot and file locks in preflight are workspace-scoped; mixing projects in one workspace is a good way to confuse yourself.
+My advice: **one project, one workspace — don't mix.** The git snapshot and file locks in preflight are workspace-scoped; mixing projects in one workspace is a good way to confuse yourself.
 
 ## Four strategies, and when to use which
 
@@ -108,7 +108,7 @@ Our advice: **one project, one workspace — don't mix.** The git snapshot and f
 | **Sampling** | 2–5 isolated sessions each produce a complete candidate, shown side by side with costs — **you** pick; the machine makes no aesthetic judgment | Titles, ideas, designs: you want options, not an answer | ~N× |
 | **Review** | After the run, an independent session tears the result apart through your "review focus" and writes up its findings | Important deliverables, one more pass before shipping | ~2× |
 
-## Three autonomy levels: you decide how much rope to give
+## Three autonomy levels
 
 - **L1 per-task**: every task needs your individual ✓. Use it early on, or when the repo is precious.
 - **L2 batch** (default): tasks wait in review; a gate card appears 30 minutes before the batch and releases everything at once; no release, no run. The daily driver.
@@ -116,19 +116,19 @@ Our advice: **one project, one workspace — don't mix.** The git snapshot and f
 
 Individual tasks can override the global level in the ticket modal.
 
-## Architecture: why it dares to work while you're away
+## Architecture: how it runs while you're away
 
-Letting an agent run batch jobs while you sleep sounds scary. lowtide dares because four layers sit underneath.
+Letting an agent run batch jobs while you sleep is a big ask. Four layers underneath make it safe.
 
-**The Cordis microkernel.** dsh runs on the Cordis microkernel plugin ecosystem: every capability is a plugin, and plugins talk through service injection rather than direct dependency. lowtide's host half is a set of well-behaved Cordis services — routes, scheduler, state machine — each doing its own job, registered into the kernel, starting with the harness, uninstalling cleanly. In plain words: we're not a skin stapled onto dsh; we're an organ grown inside the kernel.
+**The Cordis microkernel.** dsh runs on the Cordis microkernel plugin ecosystem: every capability is a plugin, and plugins talk through service injection rather than direct dependency. lowtide's host half is a set of well-behaved Cordis services — routes, scheduler, state machine — each doing its own job, registered into the kernel, starting with the harness, uninstalling cleanly. In plain words: it's not a skin stapled onto dsh; it's an organ grown inside the kernel.
 
 **Two faces, one artifact.** The host half (Node.js) owns scheduling, execution, and the ledger; the browser half (React) owns every pixel. One build produces both — and since dsh Desktop's GUI is itself web-rendered, desktop and web need no separate branches. Same bytes, same behavior.
 
 **A platform-agnostic core.** `lowtide-core` holds the window model, price tables, the billing formula, queue digest, ledger, and batch-window math — all pure functions that touch zero dsh APIs, shipped as their own package with their own tests. The practical payoff: the core has been hammered by 44 pure-function unit tests, and if you ever port lowtide to another agent framework, this package lifts out intact.
 
-**A defense chain that trusts nothing.** Five preflight gates (is the workspace still there, did git HEAD move, do the locked-file sha256s match, does the window fit, is there budget left) — fail any one and the task goes stale or defers; never a blind run. Three sandbox presets with approval set to never — unattended means nobody is there to click "allow", so what's permitted is decided before the run starts. The state file is written atomically and rolls back to a backup if corrupted. HTTP routes only accept same-origin requests from this machine.
+**Defense in depth.** Five preflight gates (is the workspace still there, did git HEAD move, do the locked-file sha256s match, does the window fit, is there budget left) — fail any one and the task goes stale or defers; never a blind run. Three sandbox presets with approval set to never — unattended means nobody is there to click "allow", so what's permitted is decided before the run starts. The state file is written atomically and rolls back to a backup if corrupted. HTTP routes only accept same-origin requests from this machine.
 
-State sync rides SSE and falls back to 4-second polling — the queue moves, the UI moves with it.
+State sync uses SSE with a 4-second polling fallback — the queue moves, the UI moves with it.
 
 ## Installation
 
@@ -164,7 +164,7 @@ Open dsh afterwards: you should see the price pill in the session header and the
 
 **Life in the queue dock.** Grouped by workspace into pending / finished / dropped. Inline per task: ✓ approve, ⏸ defer, ✕ drop (soft delete, restorable). "Approve all" releases everything; "clear finished" keeps it tidy (the books are unaffected); "Run now" skips the wait and launches a batch immediately — that's how you debug.
 
-**Time semantics, worth one read.** Official peak hours are judged in **Beijing time** (DeepSeek bills in Beijing time, so the books stay aligned; weekends are off-peak all day). Your custom windows and the run window are judged in **your local time**, with overnight ranges and per-weekday rules. Window end stops new launches; running tasks are never interrupted.
+**Time semantics.** Official peak hours are judged in **Beijing time** (DeepSeek bills in Beijing time, so the books stay aligned; weekends are off-peak all day). Your custom windows and the run window are judged in **your local time**, with overnight ranges and per-weekday rules. Window end stops new launches; running tasks are never interrupted.
 
 **The ledger.** `ledger[YYYY-MM-DD] = { yuan, savedYuan }` — spend and savings, accrued daily. The displayed price is the billed price: one formula, auditable to the digit.
 
@@ -232,7 +232,7 @@ pnpm --filter dsh-lowtide test     # 124 plugin unit tests
 pnpm --filter dsh-lowtide exec playwright test   # e2e (needs dsh web running on :3080)
 ```
 
-Ten e2e specs run serially, from two-face load smoke to the full intake→adjudicate→run→report loop against the real API. GitHub Actions is wired up: every push / PR runs install → build → typecheck → the full unit suite on four environments.
+Ten e2e specs run serially, from two-face load smoke to the full intake→adjudicate→run→report loop against the real API. The repo includes a GitHub Actions workflow: every push / PR runs install → build → typecheck → the full unit suite on four environments.
 
 ## Security
 
