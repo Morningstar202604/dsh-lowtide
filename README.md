@@ -2,7 +2,7 @@
 
 # dsh-lowtide
 
-**Drop your tasks in the queue before bed. Wake up to finished work — and a half-price bill.**
+**Drop your tasks in the queue before bed. Wake up to finished work.**
 
 **English** | [简体中文](./README.zh-CN.md)
 
@@ -12,42 +12,40 @@
 
 ![hero](./assets/screenshots/hero.png)
 
-<p align="center"><i>Three tasks queued for review, live price status in the session header, auto-run when your window opens</i></p>
+<p align="center"><i>Three tasks waiting in the queue, the price status glowing in the session header, auto-run when your window opens</i></p>
 
-## What is this
+## Introduction
 
-lowtide is a plugin for [DeepSeek Harness (dsh)](https://github.com/deepseek-ai/dsh) that does one thing well: **it separates "filing a task" from "running a task" in time.**
+lowtide is a plugin for [DeepSeek Harness (dsh)](https://github.com/deepseek-ai/dsh). The problem it solves is plain and perfectly natural:
 
-Whenever something crosses your mind during the day, toss it in the queue, review it, release it — then go to your meeting, go to sleep, go live your life. When the off-peak window you set arrives, it runs the batch by itself. You come back: the work is there, and so is the report.
+Usually, when we want an agent to do some work, the user sits at the computer, sends the agent an instruction, waits for the reply, and then reviews it by hand. But this workflow seems to forget that we have plenty of idle time — and a chance to dodge the peak/off-peak pricing that some models charge.
 
-Some hard numbers up front:
+With lowtide installed, the day goes like this: whenever a job crosses your mind during the day, toss it in the queue, glance at it, release it. The tasks pile up until the time you set (say, after 7 PM — that's when DeepSeek is at valley pricing), then run by themselves. Next morning you open the report: keep what went well, send back what didn't.
 
-- **Four execution strategies**: single, iterative, sampling, review — from "one pass is enough" to "run five candidates and let me pick"
-- **168 unit tests + 10 end-to-end specs**, CI green on a four-cell matrix (ubuntu / windows × node 22 / 24)
-- **One build artifact for both desktop and web** — install once, works everywhere
-- Off-peak execution lands in DeepSeek's valley pricing: **about half price**, with peak/valley spreads up to 1100% on some models
+That's all it is. But use it for a week and your working rhythm genuinely slows down — and don't forget, "time is money, efficiency is life"……
 
-## How you'll actually use it: real scenarios
+A few hardcore capabilities:
 
-**Scenario one: ten minutes before you clock out.**
-You've finished today's review. You file three tickets for tomorrow: a refactor (iterative, 3 rounds), a weekly report (single), and a design you're unsure about (sampling, 4 candidates). Approve all, shut down, leave. Tomorrow morning at your desk, you open the report: the refactor is done, the report draft is filed, and four candidate designs sit side by side — with exactly what each one cost.
+- Four execution strategies: single, iterative, sampling, review — from "one pass is enough" to "run five candidates and I'll pick"
+- 168 unit tests + 10 end-to-end specs, CI green across ubuntu / windows × node 22 / 24
+- One build artifact serves both desktop and web — install once, works on both
+- Off-peak execution lands in DeepSeek's valley hours: the same batch costs about half of what peak would
 
-**Scenario two: weekends are all-day off-peak.**
-Friday night, you queue a week's worth of chores: dependency cleanup, missing tests, data scripts. Saturday and Sunday are valley price around the clock. You go out; it works from home. Monday you accept the results in the report — retry what failed, merge what's good.
+## A normal day with an agent might look like this…
 
-**Scenario three: peak-hour inspiration, intercepted.**
-10 AM, you're mid-conversation with the agent about an urgent bug, and you're tempted to add "oh, and update the docs too." The intercept card pops up: run now at peak price, or queue it for tonight at half price — the exact difference is right there. One click on "queue for off-peak", your draft survives untouched, and you go back to your bug.
+**Ten minutes before clocking out.** You've finished reviewing code, so you file three tickets for tomorrow: a refactor (iterative, 3 rounds), a weekly report (single), and a design you're unsure about (sampling, 4 candidates). Release them all, shut down, leave. Tomorrow at your desk, the morning report says: the refactor's done, the report's drafted, and four candidate designs sit side by side, each with its cost written out.
 
-**Scenario four: an always-on server (L3 full-auto).**
-You have a machine running dsh 24/7. Switch to L3, and from then on you can file tasks from anywhere via the API (`POST /ds-lowtide/tasks`). It runs them on schedule and writes the report. Fully unattended — but the sandbox presets, daily budget, and file locks are all still on.
+**Friday night.** Queue a week's worth of chores in one go: dependency cleanup, missing tests, data scripts. Weekends are valley price around the clock. You go out; it works from home. Monday you check the report — retry what failed, merge what's good.
 
-**Scenario five: deliverables that need a backstop.**
-For the proposal going to a client, use the review strategy: run once, then automatically open an independent session that tears the result apart through your chosen "review focus" (say, "hunt for data-source errors"). In the morning you don't get a bare result — you get a result plus a critical review.
+**A 10 AM brainwave.** You're mid-conversation with the agent about an urgent bug when you think "hey, update the docs too." The intercept card pops up: running now costs peak price, tonight it's about half — the difference is spelled out. Click "queue for off-peak"; your draft survives untouched, and you go back to the bug.
 
-**Scenario six: living abroad.**
-You're in San Francisco. DeepSeek's "peak" is Beijing time — for you, that's yesterday afternoon. The settings page shows those hours converted to your local clock, with one-click adoption. You set windows by your own schedule; the books always stay aligned with the official table.
+**An always-on server.** You've got a machine running dsh 24/7. Switch to L3 full-auto, then file tasks from anywhere through the API (`POST /ds-lowtide/tasks`). It runs them on schedule and writes the report. Nobody's watching, but the sandbox, the daily budget, and the file locks are all still there.
 
-## How it works
+**Something going to a client.** Use the review strategy: run once, then automatically open an independent session that tears the result apart through your chosen focus (say, "hunt for data-source errors"). In the morning you don't get a bare result — you get a result plus a critical review.
+
+**Living abroad.** You're in San Francisco; DeepSeek's peak is Beijing time, which for you is yesterday afternoon. Settings converts the official hours to your local clock, one click to adopt. You set windows by your own schedule, and the books always stay aligned with the official table.
+
+## How lowtide works
 
 ```
 ① Intake             ② Adjudicate         ③ Execute               ④ Accept
@@ -61,61 +59,43 @@ ticket (4 strategies) ✓approve ⏸defer     one batch per window     + money s
 
 A task's life: `pending-review → queued → preflight → running → done / failed / stale / timeout`, plus `deferred` (postponed) and `dropped` (soft-deleted, restorable).
 
-Look at step two — **adjudication**. That's the real difference between lowtide and a "fully automated script": every task must be released by your hand (or by you, once, at the L2 batch gate). The machine has no power to move itself into the run queue. Execution is automated; decisions are not. That's why we can honestly say: you can afford to be absent.
+Step two deserves a few extra words. Adjudication is what separates lowtide from a "fully automated script": **every task must be released by your hand before it runs** (in L2, you release the whole batch at once, 30 minutes before the window). The machine has no power to move itself into the run queue. Execution is automated; decisions are not. That's why we can honestly say you can afford to be absent.
 
-## The interface, piece by piece
+## A tour of the lowtide interface
 
-### New-task modal — four strategies on one ticket
+**The new-task modal.** Four strategies side by side, each with a plain-language hint; rounds, priority, and run mode ride along per task — no trip back to settings. Tasks land as "pending review". Nothing bypasses you into the queue.
 
 ![new-task-modal](./assets/screenshots/new-task-modal.png)
 
-Single / Iterative / Sampling / Review, side by side, each with a plain-language hint about what it's for. Rounds, priority, and run mode ride along per task — no trip back to settings. Tasks land as "pending review"; nothing bypasses you into the queue.
-
-### Advanced options — tune every task individually
+**Advanced options.** Model, reasoning effort, priority from 0 to 9, fresh session or continue-previous, and the locked-files list — all in one small pane. The locked files deserve a sentence: anything on the list gets sha256-checked before execution, and if it doesn't match what you filed, the task goes stale and refuses to run. Otherwise the file you queued against could be rewritten by another task while waiting, and this one would blindly stomp on it.
 
 ![advanced-options](./assets/screenshots/advanced-options.png)
 
-Model, reasoning effort (follow global / off / low / high / max), priority from 0 to 9, fresh session or continue-previous, and the locked-files list. That last one deserves a sentence: anything on it gets sha256-checked before execution, and if it doesn't match what you filed, the task goes stale and refuses to run — so the file you queued against can't be silently rewritten by another task in the meantime.
-
-### Pick any model — whatever your Harness speaks, lowtide runs
+**Pick any model.** Batch runs default to the official `deepseek-v4-flash`, but each task can pick its own model — anything connected to your Harness is in the dropdown, grouped by provider. Private providers work too. Non-official models have no public price table, so the ledger honestly says "price unknown"; add a price override in settings if you want the bookkeeping exact.
 
 ![model-picker](./assets/screenshots/model-picker.png)
 
-Batch runs default to the official `deepseek-v4-flash`, but every task can pick its own model — anything connected to your Harness is in the dropdown, grouped by provider. Hooked up your own private provider? That works too. Non-official models have no public price table, so the ledger honestly says "price unknown"; fill in a price override in settings if you want the bookkeeping exact.
-
-### Window editor — your schedule, on one screen
+**The window editor.** Multi-segment, overnight, per-weekday — all fine. Underneath is a live 24-hour price band: red for peak, green for valley, and a marker showing where you are right now. Outside UTC+8, one click on "adopt official peak hours" converts Beijing time to your local clock.
 
 ![window-editor](./assets/screenshots/window-editor.png)
 
-Windows can be multi-segment, overnight, weekday-specific. Underneath is a live 24-hour price band: red for peak, green for off-peak, and a marker showing where you are right now. Outside UTC+8? "Adopt official peak hours" converts Beijing time to your local timezone in one click.
-
-### Settings — every switch is here, no config files to touch
+**The settings page.** Window hours, tasks per batch, per-task duration cap, concurrency, daily budget, report history, autonomy level, price overrides — all graphical, no config files. The official pricing rules (including the new all-weekend valley) are explained in human language on the same page.
 
 ![settings](./assets/screenshots/settings.png)
 
-When the off-peak window runs, how many tasks per batch, how long each task may take, how much concurrency across workspaces, how much money per day, how many reports to keep, which autonomy level, whether to override the price table — all graphical. The official pricing rules (including the new all-weekend valley) are explained in human language on the same page.
+Three more surfaces hide in the daily flow: the **price pill** (session header — busy/idle, countdown, queue size; click it to edit windows), the **peak-hours intercept card** (type at peak, it appears; the price difference is spelled out; your draft survives), and the **execution report** (the morning briefing: savings first, anomalies pinned, candidates awaiting your pick, one-click Markdown copy).
 
-### Three more surfaces, woven into the daily flow
+## About lowtide workspaces
 
-- **Price pill** (session header): busy or idle right now, how long until the next batch, how many tasks are queued — one glance tells all. Click it to edit windows.
-- **Peak-hours intercept card**: type in the composer at peak and it appears — "run now" or "queue for off-peak", with the price difference spelled out. Your draft survives untouched; dismiss it for the day if it nags.
-- **Execution report (the morning briefing)**: opens with how much you saved this run, pins anomalies on top, lines up sampling candidates for your pick, keeps history, and copies to Markdown in one click.
+Every task runs inside a workspace. That single dropdown decides three things.
 
-## Workspaces: the most overlooked — and most important — choice
+**Which files it can touch.** Tasks run in a sandbox whose boundary is the workspace directory. Pick wrong and at best it can't find the files; at worst it edits something it shouldn't.
 
-Every task executes inside a **workspace**. That one dropdown decides three things:
+**Who it queues with.** Tasks in the same workspace run serially (two tasks never fight over one repo); different workspaces run in parallel (default cap 3, adjustable). Want throughput? Spread unrelated work across workspaces. Want order? Keep it in one.
 
-1. **Which files it can touch.** Tasks run in a sandbox whose boundary is the workspace directory (`lt-standard` is workspace-write). Pick wrong, and at best it can't find the files; at worst it edits something it shouldn't.
-2. **Who it queues with.** Tasks in the same workspace run **serially** (so two tasks never fight over one repo); different workspaces run **in parallel** (cap configurable, default 3). Want throughput? Spread unrelated tasks across workspaces. Want order? Keep them in one.
-3. **How the queue and reports group.** Both the dock and the morning report organize by workspace — once you have real volume, this grouping saves you.
+**How reports group.** Both the dock and the morning report organize by workspace — once you have real volume, this grouping saves you.
 
-**How to choose:** the Workspace dropdown in the ticket modal offers three sources —
-
-- **Use current workspace**: whatever workspace your current session lives in. The common case.
-- **An existing workspace from the list**: each shown with its absolute path, so you always know which project it is.
-- **Custom path…**: type a path by hand to point a task at a fresh directory.
-
-If you pick "Continue previous" as the session mode, you'll choose a workspace and then a specific conversation inside it — the task resumes with that conversation's context. Perfect for "we didn't finish yesterday; pick it up tonight."
+The Workspace dropdown in the ticket modal has three sources: **Use current workspace** (whatever your session lives in — the common case), **an existing workspace from the list** (each shown with its absolute path, so you always know which project it is), or **Custom path…** (type one by hand). If you picked "Continue previous" as the session mode, you'll also choose the workspace and the exact conversation — the task resumes with that conversation's context.
 
 Our advice: **one project, one workspace — don't mix.** The git snapshot and file locks in preflight are workspace-scoped; mixing projects in one workspace is a good way to confuse yourself.
 
@@ -123,52 +103,40 @@ Our advice: **one project, one workspace — don't mix.** The git snapshot and f
 
 | Strategy | What it does | When to reach for it | Cost |
 |---|---|---|---|
-| **Single** | One pass, like a normal agent task | Simple, well-defined jobs | 1× |
-| **Iterative** | 2–5 rounds in one session, each reviewing and improving the last through your "iteration lens"; stops early when two rounds look alike enough (bigram similarity > 0.9) | Work that needs polishing: writing, plans, code | ~N× |
-| **Sampling** | 2–5 isolated sessions each produce one complete candidate; shown side by side with costs, and **you** pick — the machine makes no aesthetic judgment | Titles, ideas, designs: you want options, not an answer | ~N× |
-| **Review** | After the run, an independent session re-examines the result through your "review focus" and writes up its findings | Important deliverables, one more pass before shipping | ~2× |
+| **Single** | One pass, done | Simple, well-defined jobs | 1× |
+| **Iterative** | 2–5 rounds in one session, each improving the last through your "iteration lens"; stops early when two rounds look alike enough | Work that needs polishing: writing, plans, code | ~N× |
+| **Sampling** | 2–5 isolated sessions each produce a complete candidate, shown side by side with costs — **you** pick; the machine makes no aesthetic judgment | Titles, ideas, designs: you want options, not an answer | ~N× |
+| **Review** | After the run, an independent session tears the result apart through your "review focus" and writes up its findings | Important deliverables, one more pass before shipping | ~2× |
 
 ## Three autonomy levels: you decide how much rope to give
 
-| Level | Behavior | When to use it |
-|---|---|---|
-| **L1 per-task** | Every task needs your individual ✓ | Early days, precious repos |
-| **L2 batch** (default) | Tasks wait in review; a gate card appears 30 minutes before the batch and releases everything at once; no release, no run | Daily driver |
-| **L3 full-auto** | Filed tasks queue immediately and run in the sandbox at off-peak, zero confirmations (switching asks twice) | Always-on servers, full delegation |
+- **L1 per-task**: every task needs your individual ✓. Use it early on, or when the repo is precious.
+- **L2 batch** (default): tasks wait in review; a gate card appears 30 minutes before the batch and releases everything at once; no release, no run. The daily driver.
+- **L3 full-auto**: filed tasks queue immediately and run in the sandbox at off-peak, zero confirmations (switching asks twice). Built for always-on servers.
 
-Individual tasks can override the global level in the ticket modal — global L2, but that one trivial task can ride L3.
+Individual tasks can override the global level in the ticket modal.
 
-## Architecture: why it dares to run unattended
+## Architecture: why it dares to work while you're away
 
-Let's be honest: letting an agent run batch jobs while you're away is a scary thing to do. lowtide dares because of four layers of engineering.
+Letting an agent run batch jobs while you sleep sounds scary. lowtide dares because four layers sit underneath.
 
-**Layer one: the Cordis microkernel.** dsh itself runs on the Cordis microkernel plugin ecosystem — every capability is a plugin, and plugins talk through service injection rather than direct dependency. lowtide's host half is a set of well-behaved Cordis services — routes, scheduler, state machine — each doing its own job, registered into the kernel, starting with the harness, and uninstalling cleanly. We're not a skin stapled onto dsh; we're an organ grown inside the kernel.
+**The Cordis microkernel.** dsh runs on the Cordis microkernel plugin ecosystem: every capability is a plugin, and plugins talk through service injection rather than direct dependency. lowtide's host half is a set of well-behaved Cordis services — routes, scheduler, state machine — each doing its own job, registered into the kernel, starting with the harness, uninstalling cleanly. In plain words: we're not a skin stapled onto dsh; we're an organ grown inside the kernel.
 
-**Layer two: host half + browser half, one build, two faces.** The host half (Node.js) owns scheduling, execution, and the ledger; the browser half (React) owns every pixel of UI. Both ends share a single build artifact — dsh Desktop's GUI is itself web-rendered — so desktop and web **need no separate branches and behave identically**. The window you configure in Desktop is the same state file the web UI reads.
+**Two faces, one artifact.** The host half (Node.js) owns scheduling, execution, and the ledger; the browser half (React) owns every pixel. One build produces both — and since dsh Desktop's GUI is itself web-rendered, desktop and web need no separate branches. Same bytes, same behavior.
 
-**Layer three: the platform-agnostic core, `lowtide-core`.** Window model, price tables, the billing formula, queue digest, ledger, batch-window math — all pure functions with zero dsh API dependencies, shipped as their own package with their own tests. The practical payoff: the core can be hammered by 44 pure-function unit tests, and if you ever port lowtide to another agent framework, this package lifts out intact.
+**A platform-agnostic core.** `lowtide-core` holds the window model, price tables, the billing formula, queue digest, ledger, and batch-window math — all pure functions that touch zero dsh APIs, shipped as their own package with their own tests. The practical payoff: the core has been hammered by 44 pure-function unit tests, and if you ever port lowtide to another agent framework, this package lifts out intact.
 
-**Layer four: a defense chain that trusts no input.**
+**A defense chain that trusts nothing.** Five preflight gates (is the workspace still there, did git HEAD move, do the locked-file sha256s match, does the window fit, is there budget left) — fail any one and the task goes stale or defers; never a blind run. Three sandbox presets with approval set to never — unattended means nobody is there to click "allow", so what's permitted is decided before the run starts. The state file is written atomically and rolls back to a backup if corrupted. HTTP routes only accept same-origin requests from this machine.
 
-- **Five preflight gates**: is the workspace still there, did git HEAD move, do locked-file sha256s match, does the window fit, is there budget left — fail any one and the task goes `stale` or auto-defers. Never a blind run.
-- **Fail-closed permission presets**: `lt-readonly / lt-standard / lt-trusted`, all with approval set to never — unattended means nobody is there to click "allow", so what's permitted is decided before the run starts.
-- **Atomic writes + self-healing**: the state file is written atomically and rolls back to a backup if corrupted. Clear your finished tasks — the ledger doesn't lose a cent.
-- **Same-origin + loopback trust fence**: the HTTP routes only accept same-origin requests from this machine; cross-site calls are refused.
+State sync rides SSE and falls back to 4-second polling — the queue moves, the UI moves with it.
 
-State sync rides SSE incremental push, falling back to 4-second polling — the queue moves, the UI moves with it.
-
-## Quick Start
+## Installation
 
 Prerequisites: Node `^22.19 || >=24`, pnpm `11.7`. Everything is on the public npm registry — no private registry needed.
 
-**Step 1: install dsh (pick one)**
+First install dsh (pick one): Desktop from DeepSeek's official channels, or `npm install -g @deepseek-ai/dsh` for the CLI. Then configure a working model in dsh's settings (e.g. an official DeepSeek API key) — lowtide never touches your credentials.
 
-- Desktop: install dsh Desktop from DeepSeek's official channels (full runtime + Web UI included);
-- CLI: `npm install -g @deepseek-ai/dsh`.
-
-Then configure a working model in dsh's model settings (e.g. an official DeepSeek API key). lowtide never touches your credentials.
-
-**Step 2: clone, build, install**
+Then clone, build, install:
 
 ```powershell
 git clone https://github.com/KelaoHu/dsh-lowtide
@@ -188,38 +156,21 @@ npx @deepseek-ai/dsh@0.1.0-rc.7 plugin --profile web add ./packages/dsh       # 
 pnpm --filter dsh-lowtide dev
 ```
 
-Open dsh afterwards: you should see the price pill in the session header and the queue dock beside the input area. If not, check the FAQ.
+Open dsh afterwards: you should see the price pill in the session header and the queue dock beside the input area. If not, check the FAQ below.
 
-## Usage, at manual depth
+## Day-to-day usage
 
-### Three ways to file a task
+**Three ways to file a task.** The intercept card (type at peak, one click, your draft becomes the ticket unchanged); the ticket modal ("New" beside the input area — prompt, strategy, rounds, priority); or the API (`POST /ds-lowtide/tasks`, wire it into your own automation).
 
-1. **The intercept card** (smoothest): type at peak hours, the card appears, click "queue for off-peak" — the draft you were writing becomes the ticket, unchanged.
-2. **The ticket modal** (most complete): click "New" beside the input area; prompt, strategy, rounds, priority; advanced options add model / reasoning effort / session mode / locked files.
-3. **The API** (most geeky): `POST /ds-lowtide/tasks` — hook it into any automation you own.
+**Life in the queue dock.** Grouped by workspace into pending / finished / dropped. Inline per task: ✓ approve, ⏸ defer, ✕ drop (soft delete, restorable). "Approve all" releases everything; "clear finished" keeps it tidy (the books are unaffected); "Run now" skips the wait and launches a batch immediately — that's how you debug.
 
-### Daily life in the queue dock
+**Time semantics, worth one read.** Official peak hours are judged in **Beijing time** (DeepSeek bills in Beijing time, so the books stay aligned; weekends are off-peak all day). Your custom windows and the run window are judged in **your local time**, with overnight ranges and per-weekday rules. Window end stops new launches; running tasks are never interrupted.
 
-- Grouped by workspace in three sections: **pending / finished / dropped**.
-- Inline per task: ✓ approve, ⏸ defer to the next window, ✕ drop (soft delete — bring it back any time).
-- Bulk: "approve all" releases everything pending; "clear finished" keeps things tidy (the books are unaffected).
-- "Run now": skip the wait, launch a batch immediately. Debugging and demos live here.
-
-### Time semantics (worth one read)
-
-| Time | Judged in | Notes |
-|---|---|---|
-| Official peak hours (default) | **Beijing time** | DeepSeek bills in Beijing time; the books stay aligned. Weekends are off-peak all day |
-| Custom busy/idle windows | **Your local time** | Overnight ranges, per-weekday rules, live price band preview |
-| Off-peak run window | **Your local time** | Window end stops new launches; running tasks are never interrupted |
-
-### The daily ledger
-
-`ledger[YYYY-MM-DD] = { yuan, savedYuan }`. Spend and savings, accrued per day. The displayed price is the billed price — one formula, auditable to the digit.
+**The ledger.** `ledger[YYYY-MM-DD] = { yuan, savedYuan }` — spend and savings, accrued daily. The displayed price is the billed price: one formula, auditable to the digit.
 
 ## Configuration reference
 
-`GET /ds-lowtide/config` reads; `PUT` partially updates (fields not listed here are rejected):
+`GET /ds-lowtide/config` reads; `PUT` partially updates (unlisted fields are rejected):
 
 | Field | Type | Default | Notes |
 |---|---|---|---|
@@ -269,9 +220,9 @@ The intake UI doesn't offer a choice — all tasks run under `lt-standard`; the 
 
 ## Data & state
 
-- Everything persists in `$DSH_HOME/lowtide.json` (atomic writes, automatic rollback on corruption); with `DSH_PROFILE` set, state is isolated per profile. **One writer per file at a time** — don't run Desktop and Web simultaneously without profile isolation.
+- Everything persists in `$DSH_HOME/lowtide.json` (atomic writes, automatic rollback on corruption); with `DSH_PROFILE` set, state is isolated per profile. **One writer per file at a time** — don't run Desktop and Web at once without profile isolation.
 - One batch per window, overnight-safe; an empty queue produces no empty report.
-- Deferral recovery: at window start, preflight-deferred tasks re-queue automatically (marked failed after ≥3); manually deferred tasks return to pending-review.
+- Deferral recovery: at window start, preflight-deferred tasks re-queue automatically (failed after ≥3); manually deferred tasks return to pending-review.
 
 ## Testing & CI
 
@@ -281,38 +232,36 @@ pnpm --filter dsh-lowtide test     # 124 plugin unit tests
 pnpm --filter dsh-lowtide exec playwright test   # e2e (needs dsh web running on :3080)
 ```
 
-Ten Playwright e2e specs run serially: two-face load smoke, CSS variable resolvability against host themes, six-surface light/dark screenshots, ticket-modal overlays, settings conversion & price band, window-editor save/read-back, cross-workspace concurrency + per-workspace serialization (real LLM), the full intake→adjudicate→run→report loop (real API), and iterative convergence / sampling pick / review notes end to end.
+Ten e2e specs run serially, from two-face load smoke to the full intake→adjudicate→run→report loop against the real API. GitHub Actions is wired up: every push / PR runs install → build → typecheck → the full unit suite on four environments.
 
-GitHub Actions is wired up: every push / PR runs install → build → typecheck → the full unit suite on a four-cell matrix (ubuntu + windows × node 22 / 24).
+## Security
 
-## Security notes
-
-- Routes sit behind a Host/Origin trust fence (loopback + same-origin only); **don't expose port 3080 to the public internet** — use an SSH tunnel or an authenticated reverse proxy.
-- The Windows sandbox is mitigation-grade (partial); Linux/macOS enforce fully. For unattended use, stack the file allowlist and the daily budget.
-- L3 full-auto: filed tasks queue directly and run at off-peak with zero confirmation — the switch itself asks twice.
+- Routes only accept loopback + same-origin; **don't expose port 3080 to the public internet** — use an SSH tunnel or an authenticated reverse proxy.
+- The Windows sandbox is mitigation-grade; Linux/macOS enforce fully. For unattended use, stack the file allowlist and the daily budget.
+- Switching to L3 full-auto asks twice.
 - The state file holds full task prompts and paths; treat backups accordingly.
-- Found a vulnerability? Use the private channel in [SECURITY.md](./SECURITY.md).
+- Report vulnerabilities privately via [SECURITY.md](./SECURITY.md).
 
 ## FAQ
 
 **The window came and nothing ran?**
-Check in order: are tasks approved → is "pause off-peak batch" ticked → was the batch gate released → is the budget exhausted → did preflight fail (task becomes `stale`, reason in the detail view).
+Check in order: tasks approved? → "pause off-peak batch" ticked? → gate released? → budget exhausted? → preflight failed (task becomes `stale`, reason in the detail view).
 
 **Why doesn't sampling auto-pick the winner?**
-On purpose. The machine makes no aesthetic judgment for you — candidates and costs sit side by side, and you click "pick this one".
+On purpose. The machine makes no aesthetic judgment — candidates and costs sit side by side, and you click "pick this one".
 
 **I'm abroad and peak hours don't match my schedule?**
-The official table bills in Beijing time. Settings shows what those hours look like locally; set custom windows for your own rhythm, or click "adopt official peak hours (converted to my timezone)".
+Settings shows what the official hours look like locally; set custom windows for your own rhythm, or click "adopt official peak hours (converted to my timezone)".
 
 **Estimate and actual don't match?**
-Estimates use a rough input-token upper bound (no output); actuals use real usage (output and cache hits included). Both numbers are in the report.
+Estimates use a rough input-token upper bound; actuals use real usage (output and cache hits included). Both numbers are in the report.
 
 **A task went stale?**
 Preflight failed: workspace gone, git snapshot moved, a locked file changed, budget short, or the window can't fit it. Read `lastError` in details, fix, `retry`.
 
 ## Known limitations & roadmap
 
-- Release candidate (v0.1.1): build + 168 unit tests green; e2e needs a live dsh web instance. Installed from source.
+- Release candidate (v0.1.1), installed from source; e2e needs a live dsh web instance.
 - Default batch model is `deepseek-v4-flash`; non-official models have no public price table — the ledger marks them "price unknown", fillable in settings.
 - Per-task cap is 240 minutes; timeout cancels and retries once.
 - Roadmap candidates: multi-window multi-batch, task dependency graphs, automatic budget split, report push (email/Webhook), price-change alerts.
