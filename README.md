@@ -2,9 +2,9 @@
 
 # dsh-lowtide
 
-**The off-peak batch-task pipeline that turns DeepSeek's peak/valley pricing into your cost advantage**
+**Hand it your tasks when you have time. Come back when you're busy — the work is already done.**
 
-Queue at peak · Adjudicate by human · Execute at half price · Wake up to a report
+Plan at leisure · Adjudicate by human · Execute unattended · Accept on return
 
 **English** | [简体中文](./README.zh-CN.md)
 
@@ -14,24 +14,54 @@ Queue at peak · Adjudicate by human · Execute at half price · Wake up to a re
 
 ![hero](./assets/screenshots/hero.png)
 
-<p align="center"><i>lowtide at a glance: tasks queued for review, live price status in the header, automatic off-peak execution</i></p>
+<p align="center"><i>Three tasks queued for review, live price status in the header, automatic execution when the off-peak window opens</i></p>
 
-## Why we built lowtide
+## The problem it solves
 
-On 2026-08-17, DeepSeek's API switched to **peak/valley time-of-use pricing** ([announcement](https://finance.eastmoney.com/a/202608133840616378.html) · [coverage](https://www.dzwww.com/news/ssnews/202608/t20260817_18025522.htm)), upgraded on 2026-08-23 so **weekends are off-peak all day** ([weekend pricing notice](https://www.ithome.com/0/993/095.htm)):
+Everyone who uses AI agents heavily hits the same contradiction: **your busiest hours are exactly when the most tasks show up.**
 
-| Period | Definition (Beijing time) | Price |
-|---|---|---|
-| **Peak ("busy")** | Weekdays 09:00–12:00, 14:00–18:00 | Full price |
-| **Off-peak ("idle")** | All other weekday hours + **entire weekends** | About **half price** |
+- 10 AM, you're in a meeting, and it hits you — "that refactor really should get done." You can't do it now, and by evening you'll probably have forgotten.
+- In the evening you finally have time, so you fire five tasks at your agent — then spend two hours watching it work. The time you meant to rest goes to supervising.
+- You'd love to let the agent run fully on its own, but you don't dare: with nobody watching, what if it edits the wrong file or blows the budget?
 
-For some models, peak pricing is up to **1100% higher**. The same task, run after 18:00, costs half as much.
+**lowtide cleanly separates "filing a task" from "running a task" in time:**
 
-But ideas, requests, and reviews all happen during the day. **lowtide exists for exactly this time gap**: during the day you simply drop tasks into the queue and adjudicate them yourself; when the off-peak window opens, the plugin runs the batch unattended at roughly half price; the next morning, an execution report with **results + actual spend + how much you saved** is already waiting for you.
+> Whenever you have a moment, write the task down, drop it in the queue, review and release it.
+> Then go to your meeting, go to sleep, go live your life.
+> When the off-peak window you set arrives, it executes the batch unattended.
+> When you come back, the work is done — and an execution report is waiting for your acceptance.
 
-In one sentence: **humans decide, machines pull the night shift.**
+This isn't "a cheaper agent" — it's a new working rhythm: **your time is for decisions, the machine's time is for execution.**
 
-## Six interface highlights
+## Three core values
+
+### ① Plan at leisure, harvest when busy (the reason it exists)
+
+At its heart, lowtide is a **time-shifting task delegation pipeline**: intake → adjudicate → queue → scheduled execution → report acceptance. File tasks in any spare moment; they run unattended inside the windows you choose; a morning-briefing-style execution report lays out "what was done, how it went, what it cost" in one place. That is what semi-automation means here — **you don't have to be present, yet everything stays under your control.**
+
+### ② Semi-automated, with trust intact
+
+Execution is automated; decisions are not. Every task must pass your **human adjudication** (✓ approve / ⏸ defer / ✕ drop) before it may enter the run queue — the machine can never push a task through that gate by itself. Five preflight gates (workspace, git snapshot, file fingerprints, window, budget) run before execution; execution happens inside sandbox permission presets; afterwards, the review strategy and the morning report give you acceptance. **You can comfortably be absent.**
+
+### ③ And the bill gets cut in half along the way
+
+Since August 2026, DeepSeek bills by time of use: full price at weekday peak hours, about **half price** everywhere else (weekends included, all day), with peak/valley spreads up to **1100%** on some models ([announcement](https://finance.eastmoney.com/a/202608133840616378.html) · [coverage](https://www.dzwww.com/news/ssnews/202608/t20260817_18025522.htm) · [weekend update](https://www.ithome.com/0/993/095.htm)). lowtide's off-peak execution naturally lands in the cheap zone — **saving money isn't its purpose; it's the natural dividend of this time model**. The books are computed against the official price table in real time: the displayed price is the billed price, auditable to the digit.
+
+## How it works
+
+```
+① Intake             ② Adjudicate         ③ Execute               ④ Accept
+Whenever you have    The queue dock        When the off-peak       When you're back:
+a moment: one-click  groups tasks by       window opens: a 30s     open the report —
+from the intercept   workspace; triage    scheduler tick, five     results + diff
+card, or file a  →   line by line:    →   preflight gates,    →    + actual spend
+ticket (4 strategies) ✓approve ⏸defer     sandboxed runs,         + money saved
+                     ✕drop / approve-all  one batch per window
+```
+
+Task lifecycle: `pending-review → queued → preflight → running → done / failed / stale / timeout`, plus `deferred` (postponed) and `dropped` (soft-deleted, restorable).
+
+## Interface highlights
 
 ### ① New-task modal — four execution strategies, one ticket
 
@@ -51,7 +81,7 @@ Model, reasoning effort (Follow global / Off / Low / High / Max), ten-level prio
 
 Batch execution defaults to the official `deepseek-v4-flash`, but every task can target **any model your Harness has connected** — official Flash / Pro, custom providers, grouped by source, one click away. Non-official models have no public price table: the ledger honestly marks them "price unknown", and you can fill in a price override in settings so the books always balance.
 
-### ④ Peak/off-peak window editor — pricing you can see
+### ④ Peak/off-peak window editor — your rhythm, made visible
 
 ![window-editor](./assets/screenshots/window-editor.png)
 
@@ -69,6 +99,23 @@ Off-peak run window, per-batch task cap, per-task duration cap, cross-workspace 
 - **Peak-hours intercept card**: type in the composer during peak and it appears — "run now (peak price)" vs "queue for off-peak", with a live price comparison; your draft is fully preserved, dismissible per message.
 - **Execution report (morning report)**: conclusion first — saved ¥X this run; anomalies pinned on top, sampling candidates side by side awaiting your pick, history retained, one-click Markdown copy.
 
+## Execution strategies, in detail
+
+| Strategy | Behavior | Best for | Cost |
+|---|---|---|---|
+| **Single** | One pass, equivalent to a plain harness task | Simple, well-defined jobs | 1× |
+| **Iterative** | 2–5 rounds in one session; each round reviews and improves the previous through your "iteration lens"; consecutive rounds with bigram similarity > 0.9 count as converged — **stops early, never burns an extra cent** | Work that needs polishing: analysis, writing, code | ~N× |
+| **Sampling** | 2–5 isolated sessions each produce one complete candidate from the same instruction; candidates shown side by side with per-candidate cost; the next day **you** pick — the machine never merges or auto-picks | Titles, ideas, candidate designs: you want "a few options", not "one answer" | ~N× |
+| **Review** | After the run, an independent second session re-examines the result through your "review focus", producing structured review notes, collapsible in task details and the morning report | Important deliverables: a second pair of eyes before it ships | ~2× |
+
+## Three autonomy levels (per-task override supported)
+
+| Level | Semantics | Who it's for |
+|---|---|---|
+| **L1 per-task** | Every task needs your individual ✓ before it runs | First-time trust, risky repos |
+| **L2 batch** (default) | Tasks land in pending-review; a gate card appears T-30min before the batch window and approves everything at once; **nothing runs unapproved (fail-safe)** | Most users, most days |
+| **L3 full-auto** | Submission enters the queue directly and executes in the sandbox at off-peak with zero confirmations (a second confirmation guards the switch) | Always-on servers, fully hands-off setups |
+
 ## Architecture: engineered for unattended execution
 
 lowtide is not a script — it is a complete engineering system:
@@ -80,21 +127,6 @@ lowtide is not a script — it is a complete engineering system:
 - **Five preflight gates**: workspace existence, git HEAD snapshot, locked-file sha256, window fit, daily budget — fail any one and the task goes `stale` or auto-defers. **Never a blind run.**
 - **Fail-closed permission fence**: three sandbox presets `lt-readonly / lt-standard / lt-trusted` (approval=never) keep unattended off-peak execution interruption-free with the risk caged; routes add a same-origin + loopback trust fence on top.
 - **The human-adjudicated gate**: `pending-review` is the single checkpoint between human and machine. The machine can never push a task through it — in sampling mode, even "which candidate ships" is a human decision. No auto-merge, no auto-pick.
-
-## Workflow: four steps from intake to morning report
-
-```
-① Intake          ② Adjudicate        ③ Execute              ④ Report
-Type at peak and   Triage in the       Auto-run inside the    Next morning:
-get intercepted,   queue dock:         off-peak window;       results + diff
-or file a ticket → ✓approve ⏸defer → five preflight gates →  + actual spend
-(4 strategies)     ✕drop / approve-all one batch per window   + money saved
-```
-
-1. **Intake**: type during peak and the intercept card offers "queue for off-peak"; or click "New" beside the input area and file a ticket (strategy / rounds / priority / model of your choice).
-2. **Adjudicate**: the queue dock groups work by workspace — inline ✓ approve / ⏸ defer / ✕ drop; dropped tasks are restorable, and "approve all" is one click.
-3. **Execute**: inside the off-peak run window (default 19:00–23:30 local), a 30-second scheduler tick kicks off the batch; five preflight gates first, serial within a workspace, parallel across workspaces (configurable concurrency).
-4. **Report**: open the execution report the next morning — results, diffs, actual spend, and savings itemized; for sampling tasks, click "pick this one" here.
 
 ## Quick Start
 
@@ -129,28 +161,24 @@ pnpm --filter dsh-lowtide dev
 
 > `cordis.patch.yml` is the bundle-layer patch: it inserts the plugin line and injects the three `lt-*` permission presets; `cordis.dev.yml` is an intentionally empty dev overlay (to avoid duplicate insertion).
 
-## Usage, in detail
+## Usage, at operations-manual depth
 
-### Four execution strategies
+### Three ways to file a task
 
-| Strategy | Behavior | Cost |
-|---|---|---|
-| **Single** | One pass, equivalent to a plain harness task | 1× |
-| **Iterative** | 2–5 rounds in one session; each round reviews and improves the previous through your "iteration lens"; consecutive rounds with bigram similarity > 0.9 count as converged — **stops early, never burns an extra cent** | ~N× |
-| **Sampling** | 2–5 isolated sessions each produce one complete candidate from the same instruction; the next day **you** pick — the machine makes no aesthetic judgment | ~N× |
-| **Review** | After the run, an independent second session re-examines the result with a critical eye through your "review focus", producing structured review notes | ~2× |
+1. **Via the intercept card** (smoothest): type in the composer during peak hours; the intercept card appears; click "queue for off-peak" — the draft you were writing becomes the ticket, unchanged.
+2. **Via the ticket modal** (most complete): click "New" beside the input area; fill in prompt, strategy, rounds, priority; advanced options hold model / reasoning effort / session mode / locked files.
+3. **Via the API** (most geeky): `POST /ds-lowtide/tasks` — wire it into any automation system.
 
-### Three autonomy levels (per-task override supported)
+### Adjudicating and managing the queue
 
-| Level | Semantics |
-|---|---|
-| **L1 per-task** | Every task needs your individual ✓ before it runs — the choice for first-time trust or risky repos |
-| **L2 batch** (default) | Tasks land in pending-review; a gate card appears T-30min before the batch window and approves everything at once; **nothing runs unapproved (fail-safe)** |
-| **L3 full-auto** | Submission enters the queue directly and executes in the sandbox at off-peak with zero confirmations (a second confirmation guards the switch) — built for always-on servers |
+- The queue dock groups by workspace: **pending / finished / dropped**.
+- Inline actions: ✓ approve, ⏸ defer (next window), ✕ drop (soft delete, restorable any time).
+- Bulk actions: "approve all" releases everything pending; "clear finished" keeps the dock tidy (the ledger is unaffected).
+- "Run now": skip the wait and launch a batch immediately (for debugging/demos).
 
 ### Continue previous (session continuation)
 
-In advanced options, a task can "continue previous": it resumes from a chosen historical conversation in a given workspace, inheriting its context. Files in the locked-files list are sha256-verified before execution; any change marks the task stale.
+In advanced options, a task can "continue previous": it resumes from a chosen historical conversation in a given workspace, inheriting its context — perfect for "we didn't finish that yesterday; pick it up tonight". Files in the locked-files list are sha256-verified before execution; any change marks the task stale.
 
 ### Time semantics (important)
 
@@ -204,7 +232,24 @@ Prefix `/ds-lowtide/`, guarded by a same-origin + loopback trust fence (`sec-fet
 | POST | `/dismiss` | No more interception today |
 | GET | `/health` | Heartbeat |
 
-Task lifecycle: `pending-review → queued → preflight → running → done / failed / stale / timeout`, plus `deferred` (postponed) and `dropped` (soft-deleted, restorable).
+## Permission presets
+
+Injected by `cordis.patch.yml` (unattended off-peak = sandbox + zero approvals):
+
+| preset | sandbox | approval |
+|---|---|---|
+| `lt-readonly` | read-only | never |
+| `lt-standard` | workspace-write | never |
+| `lt-trusted` | danger-full-access | never |
+
+The intake UI no longer offers a preset choice (all tasks run under `lt-standard`); the other two remain available for API/backend use by passing `permissionPreset` to `POST /tasks`. Nothing runs without preflight — never a blind run.
+
+## Data & state
+
+- Tasks, reports, ledger, and config persist in the state file `$DSH_HOME/lowtide.json` (atomic writes, automatic rollback to backup on corruption); when the process exposes `DSH_PROFILE`, state is isolated per profile at `$DSH_HOME/profiles/<profile>/lowtide.json`. **Only one instance should write a given file at a time.**
+- The ledger accrues per day; report history is retained (clearing finished tasks never loses the books).
+- One batch per window (overnight-safe); an empty queue produces no empty report.
+- Deferral recovery: at window start, preflight-deferred tasks re-queue automatically (marked failed after ≥3); manually deferred tasks return to pending-review.
 
 ## Testing: 168 unit tests + 10 end-to-end specs
 
@@ -216,12 +261,15 @@ pnpm --filter dsh-lowtide exec playwright test   # e2e (requires dsh web on :308
 
 Ten Playwright e2e specs run serially, covering: two-face load smoke, CSS variable resolvability against host themes, six-surface light/dark screenshots, ticket-modal overlays, settings conversion & price band, window-editor save/read-back, cross-workspace concurrency + per-workspace serialization (real LLM execution), the full intake→adjudicate→run→report loop (real API), and iterative convergence / sampling pick / review notes end to end.
 
+GitHub Actions CI is built in: every push / PR runs install → build → typecheck → the full unit suite across a four-cell matrix (ubuntu + windows × node 22 / 24).
+
 ## Security notes
 
 - Routes carry a Host/Origin trust fence (loopback + same-origin); **do not expose port 3080 directly to the public internet** — use an SSH tunnel or an authenticated reverse proxy for remote setups.
 - The Windows sandbox is "mitigation-grade" (partial); Linux/macOS enforce fully. For unattended runs, stack task-level file allowlists and the budget backstop.
 - L3 full-auto: submission enters the queue directly and executes in the sandbox at off-peak with zero confirmation — the switch is guarded by a second confirmation.
 - The state file contains full task prompts and paths; handle backups with care.
+- Report vulnerabilities privately via [SECURITY.md](./SECURITY.md).
 
 ## FAQ
 
