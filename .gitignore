@@ -1,6 +1,7 @@
 node_modules/
-lib/
-dist/
+# Build outputs (anchored — do NOT ignore source dirs like client/lib/)
+/packages/*/lib/
+/packages/*/dist/
 **/test/screenshots/
 **/test-results/
 *.tsbuildinfo
