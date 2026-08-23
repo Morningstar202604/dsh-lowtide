@@ -4,7 +4,7 @@
 
 **Drop your tasks in the queue before bed. Wake up to finished work.**
 
-**English** | [简体中文](./README.zh-CN.md)
+**English** | [简体中文](./README.zh-CN.md) | [العربية](./docs/README.ar.md) | [Deutsch](./docs/README.de.md) | [Español](./docs/README.es.md) | [Français](./docs/README.fr.md) | [Italiano](./docs/README.it.md) | [한국어](./docs/README.ko.md)
 
 </div>
 
@@ -273,6 +273,7 @@ dsh-lowtide/
 ├── README.md                  This file
 ├── README.zh-CN.md            中文版
 ├── assets/screenshots/        README screenshots
+├── docs/                      Multilingual READMEs (ar, de, es, fr, it, ko)
 ├── LICENSE                    MIT
 ├── CHANGELOG.md               Version history
 ├── CONTRIBUTING.md            Contributing guide

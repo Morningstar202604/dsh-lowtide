@@ -4,7 +4,7 @@
 
 **睡前把任务扔进队列，醒来活儿已经干完了。**
 
-[English](./README.md) | **简体中文**
+[English](./README.md) | **简体中文** | [العربية](./docs/README.ar.md) | [Deutsch](./docs/README.de.md) | [Español](./docs/README.es.md) | [Français](./docs/README.fr.md) | [Italiano](./docs/README.it.md) | [한국어](./docs/README.ko.md)
 
 </div>
 
@@ -270,6 +270,7 @@ dsh-lowtide/
 ├── README.md                  English
 ├── README.zh-CN.md            本文件
 ├── assets/screenshots/        README 界面截图
+├── docs/                      多语言 README（ar, de, es, fr, it, ko）
 ├── LICENSE                    MIT
 ├── CHANGELOG.md               版本记录
 ├── CONTRIBUTING.md            贡献指南
