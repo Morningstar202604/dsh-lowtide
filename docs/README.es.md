@@ -4,7 +4,7 @@
 
 **Deja tus tareas en la cola antes de acostarte. Despierta con el trabajo terminado.**
 
-[English](../README.md) | [简体中文](../README.zh-CN.md) | [العربية](./README.ar.md) | [Deutsch](./README.de.md) | **Español** | [Français](./README.fr.md) | [Italiano](./README.it.md) | [한국어](./README.ko.md)
+[English](../README.md) | [简体中文](../README.zh-CN.md) | [繁體中文](../README.zh-HK.md) | [العربية](./README.ar.md) | [Deutsch](./README.de.md) | **Español** | [Français](./README.fr.md) | [Italiano](./README.it.md) | [한국어](./README.ko.md)
 
 </div>
 

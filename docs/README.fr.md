@@ -4,7 +4,7 @@
 
 **Déposez vos tâches dans la file avant de dormir. Réveillez-vous avec le travail terminé.**
 
-[English](../README.md) | [简体中文](../README.zh-CN.md) | [العربية](./README.ar.md) | [Deutsch](./README.de.md) | [Español](./README.es.md) | **Français** | [Italiano](./README.it.md) | [한국어](./README.ko.md)
+[English](../README.md) | [简体中文](../README.zh-CN.md) | [繁體中文](../README.zh-HK.md) | [العربية](./README.ar.md) | [Deutsch](./README.de.md) | [Español](./README.es.md) | **Français** | [Italiano](./README.it.md) | [한국어](./README.ko.md)
 
 </div>
 

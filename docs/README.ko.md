@@ -4,7 +4,7 @@
 
 **잠들기 전에 작업을 큐에 넣으세요. 일어나면 완료된 작업이 기다립니다.**
 
-[English](../README.md) | [简体中文](../README.zh-CN.md) | [العربية](./README.ar.md) | [Deutsch](./README.de.md) | [Español](./README.es.md) | [Français](./README.fr.md) | [Italiano](./README.it.md) | **한국어**
+[English](../README.md) | [简体中文](../README.zh-CN.md) | [繁體中文](../README.zh-HK.md) | [العربية](./README.ar.md) | [Deutsch](./README.de.md) | [Español](./README.es.md) | [Français](./README.fr.md) | [Italiano](./README.it.md) | **한국어**
 
 </div>
 

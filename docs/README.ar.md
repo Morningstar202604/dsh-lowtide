@@ -4,7 +4,7 @@
 
 **ضع مهامك في قائمة الانتظار قبل النوم. استيقظ على عمل مكتمل.**
 
-[English](../README.md) | [简体中文](../README.zh-CN.md) | **العربية** | [Deutsch](./README.de.md) | [Español](./README.es.md) | [Français](./README.fr.md) | [Italiano](./README.it.md) | [한국어](./README.ko.md)
+[English](../README.md) | [简体中文](../README.zh-CN.md) | [繁體中文](../README.zh-HK.md) | **العربية** | [Deutsch](./README.de.md) | [Español](./README.es.md) | [Français](./README.fr.md) | [Italiano](./README.it.md) | [한국어](./README.ko.md)
 
 </div>
 

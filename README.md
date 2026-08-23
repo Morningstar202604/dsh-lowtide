@@ -4,7 +4,7 @@
 
 **Drop your tasks in the queue before bed. Wake up to finished work.**
 
-**English** | [简体中文](./README.zh-CN.md) | [العربية](./docs/README.ar.md) | [Deutsch](./docs/README.de.md) | [Español](./docs/README.es.md) | [Français](./docs/README.fr.md) | [Italiano](./docs/README.it.md) | [한국어](./docs/README.ko.md)
+**English** | [简体中文](./README.zh-CN.md) | [繁體中文](./README.zh-HK.md) | [العربية](./docs/README.ar.md) | [Deutsch](./docs/README.de.md) | [Español](./docs/README.es.md) | [Français](./docs/README.fr.md) | [Italiano](./docs/README.it.md) | [한국어](./docs/README.ko.md)
 
 </div>
 
@@ -272,6 +272,7 @@ Preflight failed: workspace gone, git snapshot moved, a locked file changed, bud
 dsh-lowtide/
 ├── README.md                  This file
 ├── README.zh-CN.md            中文版
+├── README.zh-HK.md            繁體中文
 ├── assets/screenshots/        README screenshots
 ├── docs/                      Multilingual READMEs (ar, de, es, fr, it, ko)
 ├── LICENSE                    MIT

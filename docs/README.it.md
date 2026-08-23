@@ -4,7 +4,7 @@
 
 **Metti le tue attività in coda prima di andare a letto. Svegliti con il lavoro fatto.**
 
-[English](../README.md) | [简体中文](../README.zh-CN.md) | [العربية](./README.ar.md) | [Deutsch](./README.de.md) | [Español](./README.es.md) | [Français](./README.fr.md) | **Italiano** | [한국어](./README.ko.md)
+[English](../README.md) | [简体中文](../README.zh-CN.md) | [繁體中文](../README.zh-HK.md) | [العربية](./README.ar.md) | [Deutsch](./README.de.md) | [Español](./README.es.md) | [Français](./README.fr.md) | **Italiano** | [한국어](./README.ko.md)
 
 </div>
 

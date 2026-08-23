@@ -4,7 +4,7 @@
 
 **Leg deine Aufgaben vor dem Schlafengehen in die Warteschlange. Wach auf mit erledigter Arbeit.**
 
-[English](../README.md) | [简体中文](../README.zh-CN.md) | [العربية](./README.ar.md) | **Deutsch** | [Español](./README.es.md) | [Français](./README.fr.md) | [Italiano](./README.it.md) | [한국어](./README.ko.md)
+[English](../README.md) | [简体中文](../README.zh-CN.md) | [繁體中文](../README.zh-HK.md) | [العربية](./README.ar.md) | **Deutsch** | [Español](./README.es.md) | [Français](./README.fr.md) | [Italiano](./README.it.md) | [한국어](./README.ko.md)
 
 </div>
 

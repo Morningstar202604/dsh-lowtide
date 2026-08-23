@@ -4,7 +4,7 @@
 
 **睡前把任务扔进队列，醒来活儿已经干完了。**
 
-[English](./README.md) | **简体中文** | [العربية](./docs/README.ar.md) | [Deutsch](./docs/README.de.md) | [Español](./docs/README.es.md) | [Français](./docs/README.fr.md) | [Italiano](./docs/README.it.md) | [한국어](./docs/README.ko.md)
+[English](./README.md) | **简体中文** | [繁體中文](./README.zh-HK.md) | [العربية](./docs/README.ar.md) | [Deutsch](./docs/README.de.md) | [Español](./docs/README.es.md) | [Français](./docs/README.fr.md) | [Italiano](./docs/README.it.md) | [한국어](./docs/README.ko.md)
 
 </div>
 
@@ -269,6 +269,7 @@ pnpm --filter dsh-lowtide exec playwright test   # e2e（需 dsh web 在 3080 �
 dsh-lowtide/
 ├── README.md                  English
 ├── README.zh-CN.md            本文件
+├── README.zh-HK.md            繁體中文版
 ├── assets/screenshots/        README 界面截图
 ├── docs/                      多语言 README（ar, de, es, fr, it, ko）
 ├── LICENSE                    MIT
