@@ -1,0 +1,115 @@
+/* TaskDetail: modal shell + drill-down styles. */
+.modalBody {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modalFooter {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.detailPrompt {
+  padding: 8px 10px;
+  background: var(--dsw-alias-bg-layer-1);
+  border: 1px solid var(--dsw-alias-border-l2);
+  border-radius: 8px;
+  color: var(--dsw-alias-label-primary);
+  font: var(--dsw-font-xs-13);
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.detailGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 12px;
+}
+
+.detailItem {
+  color: var(--dsw-alias-label-tertiary);
+  font: var(--dsw-font-xxs-12);
+}
+
+.detailValue {
+  color: var(--dsw-alias-label-primary);
+  font-family: var(--ds-font-family-code);
+  word-break: break-all;
+}
+
+.detailSection {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.detailLabel {
+  color: var(--dsw-alias-label-tertiary);
+  font: var(--dsw-font-xxs-12);
+}
+
+.detailFile {
+  color: var(--dsw-alias-label-secondary);
+  font-family: var(--ds-font-family-code);
+  font-size: 11px;
+  word-break: break-all;
+}
+
+.detailRun {
+  color: var(--dsw-alias-label-secondary);
+  font: var(--dsw-font-xs-13);
+  font-variant-numeric: tabular-nums;
+}
+
+.detailError {
+  padding: 6px 8px;
+  color: var(--dsw-alias-state-error-primary);
+  font: var(--dsw-font-xxs-12);
+  background: var(--dsw-alias-interactive-bg-hover);
+  border-radius: 6px;
+  word-break: break-word;
+}
+
+.detailResumed {
+  padding: 6px 8px;
+  color: var(--dsw-alias-state-success-primary);
+  font: var(--dsw-font-xxs-12);
+  background: var(--dsw-alias-interactive-bg-hover);
+  border-radius: 6px;
+  word-break: break-word;
+}
+
+.detailResumeWarn {
+  padding: 6px 8px;
+  color: var(--dsw-alias-state-warning-primary);
+  font: var(--dsw-font-xxs-12);
+  background: var(--dsw-alias-interactive-bg-hover);
+  border-radius: 6px;
+  word-break: break-word;
+}
+
+.detailReview {
+  color: var(--dsw-alias-label-secondary);
+  font: var(--dsw-font-xs-13);
+}
+
+.detailReview summary {
+  cursor: pointer;
+  color: var(--dsw-alias-label-secondary);
+  font: var(--dsw-font-xxs-12);
+  user-select: none;
+}
+
+.detailReviewBody {
+  margin-top: 4px;
+  padding: 6px 8px;
+  background: var(--dsw-alias-bg-layer-1);
+  border: 1px solid var(--dsw-alias-border-l1);
+  border-radius: 6px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+}

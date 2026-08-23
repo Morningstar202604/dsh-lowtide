@@ -1,0 +1,199 @@
+/* QueueDock §6.3 + QueueDock fit formula §4.8: top-rounded drawer growing
+ * out of the input card, specific-tip base, 1px l1 three-side border.
+ * Phase D: row/modal/form styles moved to TaskRow.module.css,
+ * TaskDetail.module.css, NewTaskModal.module.css, TaskForm.module.css. */
+.dock {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: calc(100% - 16px);
+  margin: 0 8px -3px 8px;
+}
+
+.dockRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  height: 36px;
+  padding: 4px 12px;
+  background: var(--dsw-specific-tip);
+  border-radius: 12px 12px 0 0;
+}
+
+.dockTitle {
+  color: var(--dsw-alias-label-secondary);
+  font: var(--dsw-font-s-14);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.pending {
+  color: var(--dsw-alias-state-warn-primary);
+  font: var(--dsw-font-xxs-12);
+}
+
+.dockActions {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.reportBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  position: relative;
+}
+
+.reportDot {
+  position: absolute;
+  top: -2px;
+  right: -4px;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--dsw-alias-state-warn-primary);
+}
+
+.sectionHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.sectionToggle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  padding: 4px;
+  border: none;
+  background: none;
+  color: var(--dsw-alias-label-tertiary);
+  font: var(--dsw-font-xxs-strong-12);
+  cursor: pointer;
+  text-align: left;
+}
+
+.sectionToggle:hover {
+  color: var(--dsw-alias-label-primary);
+}
+
+.clearBtn {
+  flex-shrink: 0;
+  padding: 3px 8px;
+  border: none;
+  border-radius: 999px;
+  background: none;
+  color: var(--dsw-alias-label-tertiary);
+  font: var(--dsw-font-xxs-12);
+  cursor: pointer;
+}
+
+.clearBtn:hover {
+  background: var(--dsw-alias-interactive-bg-hover);
+  color: var(--dsw-alias-label-primary);
+}
+
+.clearArmed {
+  color: var(--dsw-alias-state-error-primary);
+  background: var(--dsw-alias-interactive-bg-hover);
+  font-weight: 600;
+}
+
+.clearArmed:hover {
+  color: var(--dsw-alias-state-error-primary);
+}
+
+.drawer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: var(--dsw-specific-tip);
+  border-top: none;
+  max-height: 320px;
+  overflow-y: auto;
+  padding: 4px 8px 8px 8px;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.groupHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 4px 2px 4px;
+}
+
+.groupPath {
+  color: var(--dsw-alias-label-tertiary);
+  font-family: var(--ds-font-family-code);
+  font-size: 11px;
+}
+
+/* 首次引导横幅: dock 顶部的引导条。 */
+.onboarding {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: calc(100% - 16px);
+  margin: 0 8px;
+  padding: 6px 10px;
+  box-sizing: border-box;
+  background: var(--dsw-specific-tip);
+  border: 1px solid var(--dsw-alias-border-l1);
+  border-radius: 10px;
+  color: var(--dsw-alias-label-secondary);
+  font: var(--dsw-font-xxs-12);
+  line-height: 1.5;
+}
+
+.onboarding b {
+  color: var(--dsw-alias-label-primary);
+}
+
+.onboardingDismiss {
+  flex-shrink: 0;
+  padding: 3px 10px;
+  border: none;
+  border-radius: 999px;
+  background: var(--dsw-alias-brand-primary);
+  color: var(--dsw-alias-label-primary-foreground);
+  font: var(--dsw-font-xxs-12);
+  cursor: pointer;
+}
+
+.onboardingDismiss:hover {
+  opacity: 0.9;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 6px 4px 2px 4px;
+  border-top: 1px solid var(--dsw-alias-border-l1);
+}
+
+.footerActions {
+  display: flex;
+  gap: 4px;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 0;
+  color: var(--dsw-alias-label-tertiary);
+  font: var(--dsw-font-xs-13);
+}

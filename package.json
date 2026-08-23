@@ -1,0 +1,24 @@
+{
+  "name": "dsh-lowtide",
+  "version": "0.1.1",
+  "private": true,
+  "license": "MIT",
+  "author": "dsh-lowtide contributors",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KelaoHu/dsh-lowtide"
+  },
+  "description": "dsh-lowtide: human-adjudicated off-peak batch task pipeline for DeepSeek Harness (peak/valley pricing aware)",
+  "type": "module",
+  "engines": {
+    "node": "^22.19.0 || >=24.0.0"
+  },
+  "packageManager": "pnpm@11.7.0",
+  "scripts": {
+    "build": "pnpm -r bundle",
+    "test": "pnpm -r test",
+    "typecheck": "pnpm -r typecheck",
+    "dev:dsh": "pnpm --filter dsh-lowtide dev",
+    "watch:dsh": "pnpm --filter dsh-lowtide watch"
+  }
+}

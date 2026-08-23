@@ -1,0 +1,354 @@
+/* LowtideSettings: 夜间计划设置卡 —— 复用 DSH 设计令牌,与现有组件一致。 */
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 4px 2px 16px 2px;
+}
+
+.loading {
+  color: var(--dsw-alias-label-tertiary);
+  font: var(--dsw-font-xs-13);
+  padding: 12px 0;
+}
+
+.onboarding {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 14px;
+  background: var(--dsw-specific-tip);
+  border: 1px solid var(--dsw-alias-border-l1);
+  border-radius: 10px;
+}
+
+.onboardingTitle {
+  color: var(--dsw-alias-brand-primary);
+  font: var(--dsw-font-s-14);
+  font-weight: 600;
+}
+
+.onboardingSteps {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--dsw-alias-label-secondary);
+  font: var(--dsw-font-xs-13);
+  line-height: 1.7;
+}
+
+.onboardingSteps b {
+  color: var(--dsw-alias-label-primary);
+}
+
+.langRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 0;
+}
+
+.langLabel {
+  color: var(--dsw-alias-label-secondary);
+  font: var(--dsw-font-xs-13);
+}
+
+.error {
+  padding: 8px 12px;
+  color: var(--dsw-alias-state-error-primary);
+  font: var(--dsw-font-xs-13);
+  background: var(--dsw-alias-interactive-bg-hover);
+  border-radius: 8px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sectionHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sectionTitle {
+  margin: 0;
+  color: var(--dsw-alias-label-primary);
+  font: var(--dsw-font-s-14);
+  font-weight: 600;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: var(--dsw-alias-label-secondary);
+  font: var(--dsw-font-xs-13);
+}
+
+.fieldLabel {
+  color: var(--dsw-alias-label-secondary);
+  font: var(--dsw-font-xs-13);
+}
+
+.strategyHint {
+  color: var(--dsw-alias-label-tertiary);
+  font: var(--dsw-font-xxs-12);
+  line-height: 1.5;
+}
+
+.input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 32px;
+  padding: 0 8px;
+  background: var(--dsw-alias-bg-layer-1);
+  border: 1px solid var(--dsw-alias-border-l2);
+  border-radius: 8px;
+  color: var(--dsw-alias-label-primary);
+  font: var(--dsw-font-xs-13);
+  outline: none;
+}
+
+.input:focus {
+  border-color: var(--dsw-alias-brand-primary);
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--dsw-alias-label-secondary);
+  font: var(--dsw-font-xs-13);
+}
+
+.pillRow {
+  display: flex;
+  gap: 6px;
+}
+
+.autonomyPill {
+  padding: 4px 12px;
+  border: 1px solid var(--dsw-alias-border-l2);
+  border-radius: 999px;
+  color: var(--dsw-alias-label-secondary);
+  font: var(--dsw-font-xs-13);
+  cursor: pointer;
+  user-select: none;
+}
+
+.autonomyPill:hover {
+  background: var(--dsw-alias-interactive-bg-hover);
+}
+
+.autonomyActive {
+  border-color: var(--dsw-alias-brand-primary);
+  color: var(--dsw-alias-brand-primary);
+  font-weight: 600;
+}
+
+.confirmBox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  color: var(--dsw-alias-state-warn-primary);
+  font: var(--dsw-font-xxs-12);
+  background: var(--dsw-specific-tip);
+  border-radius: 8px;
+}
+
+.confirmBtn {
+  padding: 3px 10px;
+  border: none;
+  border-radius: 999px;
+  background: var(--dsw-alias-state-warn-primary);
+  color: var(--dsw-alias-label-primary-foreground);
+  font: var(--dsw-font-xxs-12);
+  cursor: pointer;
+}
+
+.confirmCancel {
+  padding: 3px 8px;
+  border: none;
+  background: none;
+  color: var(--dsw-alias-label-tertiary);
+  font: var(--dsw-font-xxs-12);
+  cursor: pointer;
+}
+
+.hint {
+  margin: 0;
+  color: var(--dsw-alias-label-tertiary);
+  font: var(--dsw-font-xxs-12);
+  line-height: 1.6;
+}
+
+.windowRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.windowRow .input {
+  flex: 0 1 150px;
+}
+
+.dayRow {
+  display: flex;
+  gap: 4px;
+}
+
+.dayBtn {
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--dsw-alias-border-l2);
+  border-radius: 999px;
+  background: none;
+  color: var(--dsw-alias-label-tertiary);
+  font: var(--dsw-font-xxs-12);
+  cursor: pointer;
+}
+
+.dayBtn:hover {
+  background: var(--dsw-alias-interactive-bg-hover);
+  color: var(--dsw-alias-label-primary);
+}
+
+.dayActive {
+  border-color: var(--dsw-alias-brand-primary);
+  color: var(--dsw-alias-brand-primary);
+  font-weight: 600;
+}
+
+.noWindows {
+  padding: 10px 12px;
+  color: var(--dsw-alias-label-tertiary);
+  font: var(--dsw-font-xs-13);
+  background: var(--dsw-specific-tip);
+  border-radius: 8px;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.footerLeft {
+  display: flex;
+  gap: 8px;
+  margin-right: auto;
+}
+
+/* 官方定价说明卡片 */
+.officialCard {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px 12px;
+  border: 1px solid var(--dsw-alias-border-l1);
+  border-radius: 10px;
+  background: var(--dsw-alias-bg-layer-1);
+}
+
+.officialTitle {
+  color: var(--dsw-alias-label-primary);
+  font: var(--dsw-font-xs-strong-13);
+}
+
+.officialBody {
+  color: var(--dsw-alias-label-secondary);
+  font: var(--dsw-font-xxs-12);
+  line-height: 1.6;
+}
+
+.officialActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 2px;
+}
+
+/* 图例:共享 PriceBand 组件自带色带本体(bandWrap/band/bandCell/band*)。 */
+.legend {
+  display: flex;
+  gap: 14px;
+}
+
+/* 图例色块(与共享色带同色)。 */
+.bandPeak {
+  background: var(--dsw-alias-state-error-primary);
+  opacity: 0.85;
+}
+
+.bandOff {
+  background: var(--dsw-alias-state-success-primary);
+  opacity: 0.85;
+}
+
+.bandCustom {
+  background: var(--dsw-alias-state-warn-primary);
+  opacity: 0.85;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--dsw-alias-label-tertiary);
+  font: var(--dsw-font-xxs-12);
+}
+
+.legendDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  opacity: 0.9;
+}
+
+/* 价目表 */
+.priceTable {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.priceHead,
+.priceRow {
+  display: grid;
+  grid-template-columns: 1.4fr 0.6fr 1fr 1fr 1fr;
+  gap: 6px;
+  align-items: center;
+}
+
+.priceHead {
+  color: var(--dsw-alias-label-tertiary);
+  font: var(--dsw-font-xxs-12);
+}
+
+.priceRow .input {
+  height: 28px;
+}
+
+.priceModel {
+  color: var(--dsw-alias-label-primary);
+  font-family: var(--ds-font-family-code);
+  font-size: 12px;
+}
+
+.priceTier {
+  color: var(--dsw-alias-label-secondary);
+  font: var(--dsw-font-xs-13);
+}

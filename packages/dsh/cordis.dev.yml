@@ -1,0 +1,6 @@
+# Development overlay: `dsh web --patch ./cordis.dev.yml`.
+# Deliberately EMPTY: the plugin row comes from the bundle layer (cordis.patch.yml)
+# once dsh-lowtide is link-installed into the profile. The cordis loader
+# errors on duplicate entry ids, so the overlay must not re-insert the row.
+# Add dev-only config (e.g. webserver port) here.
+[]

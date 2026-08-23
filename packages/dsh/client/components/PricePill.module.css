@@ -1,0 +1,38 @@
+/* PricePill: §6.1 — a Pill with dot, label, count, pending badge. */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.dot {
+  display: inline-flex;
+}
+
+.label {
+  color: var(--dsw-alias-label-secondary);
+  font: var(--dsw-font-xxs-12);
+  font-variant-numeric: tabular-nums;
+}
+
+.count {
+  color: var(--dsw-alias-label-tertiary);
+  font: var(--dsw-font-xxs-12);
+  font-variant-numeric: tabular-nums;
+}
+
+.queueIcon {
+  color: var(--dsw-alias-label-tertiary);
+}
+
+.badge {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--dsw-alias-state-warn-primary);
+}
+
+.saved {
+  color: var(--dsw-alias-state-success-primary);
+}

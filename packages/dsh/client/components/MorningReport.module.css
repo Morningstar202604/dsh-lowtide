@@ -1,0 +1,241 @@
+/* MorningReport §6.5: conclusion-first, anomalies on top, no red flooding. */
+.historyList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-height: 360px;
+  overflow-y: auto;
+}
+
+.historyRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 8px;
+  background: none;
+  color: var(--dsw-alias-label-primary);
+  font: var(--dsw-font-xs-13);
+  cursor: pointer;
+  text-align: left;
+}
+
+.historyRow:hover {
+  background: var(--dsw-alias-interactive-bg-hover);
+}
+
+.historyDate {
+  font-weight: 600;
+}
+
+.historyMeta {
+  color: var(--dsw-alias-label-tertiary);
+  font-variant-numeric: tabular-nums;
+}
+
+.historyEmpty {
+  padding: 12px;
+  color: var(--dsw-alias-label-tertiary);
+  font: var(--dsw-font-xs-13);
+}
+
+/* Report management (delete per row / clear all) — PLAN-friendly, quiet. */
+.historyHeader {
+  padding: 0 10px 2px;
+  color: var(--dsw-alias-label-tertiary);
+  font: var(--dsw-font-xxs-12);
+}
+
+.historyRowWrap {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border-radius: 8px;
+}
+
+.historyRowWrap:hover {
+  background: var(--dsw-alias-interactive-bg-hover);
+}
+
+.historyRowWrap .historyRow {
+  flex: 1;
+  min-width: 0;
+}
+
+.historyRowWrap .historyRow:hover {
+  background: none;
+}
+
+.historyDelete {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  margin-right: 4px;
+  border: none;
+  border-radius: 6px;
+  background: none;
+  color: var(--dsw-alias-label-tertiary);
+  font-size: 12px;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.historyRowWrap:hover .historyDelete {
+  opacity: 1;
+}
+
+.historyDelete:hover {
+  background: var(--dsw-alias-interactive-bg-hover);
+  color: var(--dsw-alias-state-error-primary);
+}
+
+.historyFooter {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 6px;
+  border-top: 1px solid var(--dsw-alias-border-l1);
+}
+
+.clearBtn {
+  border: none;
+  background: none;
+  color: var(--dsw-alias-label-tertiary);
+  font: var(--dsw-font-xxs-12);
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.clearBtn:hover {
+  color: var(--dsw-alias-state-error-primary);
+  background: var(--dsw-alias-interactive-bg-hover);
+}
+
+.clearArmed {
+  border: 1px solid var(--dsw-alias-state-error-primary);
+  background: none;
+  color: var(--dsw-alias-state-error-primary);
+  font: var(--dsw-font-xxs-12);
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.headline {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: center;
+}
+
+.headlineLabel {
+  color: var(--dsw-alias-label-secondary);
+  font: var(--dsw-font-s-14);
+}
+
+.headlineValue {
+  color: var(--dsw-alias-state-success-primary);
+  font-family: var(--ds-font-family-code);
+  font-variant-numeric: tabular-nums;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 40px;
+}
+
+.headlineMeta {
+  color: var(--dsw-alias-label-secondary);
+  font: var(--dsw-font-xs-13);
+  font-variant-numeric: tabular-nums;
+}
+
+.divider {
+  height: 1px;
+  background: var(--dsw-alias-border-l1);
+}
+
+.taskRow {
+  display: flex;
+  gap: 8px;
+  padding: 4px 0 4px 8px;
+  border-left: 2px solid transparent;
+}
+
+.doneRow {
+  border-left-color: var(--dsw-alias-state-success-primary);
+}
+
+.badRow {
+  border-left-color: var(--dsw-alias-state-error-primary);
+}
+
+.taskMain {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+
+.taskPrompt {
+  color: var(--dsw-alias-label-primary);
+  font: var(--dsw-font-s-14);
+}
+
+.taskMeta {
+  color: var(--dsw-alias-label-tertiary);
+  font: var(--dsw-font-xxs-12);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.more {
+  color: var(--dsw-alias-label-tertiary);
+  font: var(--dsw-font-xxs-12);
+  padding-left: 8px;
+}
+
+.reviewExcerpt {
+  color: var(--dsw-alias-label-secondary);
+  font: var(--dsw-font-xxs-12);
+}
+
+.reviewExcerpt summary {
+  cursor: pointer;
+  color: var(--dsw-alias-label-tertiary);
+  user-select: none;
+}
+
+.reviewExcerptBody {
+  margin-top: 4px;
+  padding: 6px 8px;
+  background: var(--dsw-alias-bg-layer-1);
+  border: 1px solid var(--dsw-alias-border-l1);
+  border-radius: 6px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modalFooter {
+  display: flex;
+  justify-content: flex-end;
+}

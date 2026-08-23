@@ -1,0 +1,92 @@
+/* WindowEditorModal: pill quick editor for 闲时/忙时 windows. */
+.wide {
+  width: min(560px, 100%);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tzLine {
+  color: var(--dsw-alias-label-secondary);
+  font: var(--dsw-font-xs-13);
+}
+
+.hint {
+  color: var(--dsw-alias-label-tertiary);
+  font: var(--dsw-font-xxs-12);
+  line-height: 1.5;
+}
+
+.error {
+  padding: 6px 8px;
+  color: var(--dsw-alias-state-error-primary);
+  font: var(--dsw-font-xxs-12);
+  background: var(--dsw-alias-interactive-bg-hover);
+  border-radius: 6px;
+}
+
+.empty {
+  padding: 10px 0;
+  color: var(--dsw-alias-label-tertiary);
+  font: var(--dsw-font-xs-13);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.input {
+  box-sizing: border-box;
+  height: 32px;
+  padding: 0 8px;
+  background: var(--dsw-alias-bg-layer-1);
+  border: 1px solid var(--dsw-alias-border-l2);
+  border-radius: 8px;
+  color: var(--dsw-alias-label-primary);
+  font-family: var(--ds-font-family-code);
+  font-size: 13px;
+  outline: none;
+}
+
+.input:focus {
+  border-color: var(--dsw-alias-brand-primary);
+}
+
+.row select.input {
+  font-family: var(--dsw-font-family);
+  flex: 0 0 96px;
+}
+
+.row input.input {
+  flex: 1;
+  min-width: 0;
+}
+
+.dash {
+  color: var(--dsw-alias-label-tertiary);
+}
+
+.daysBadge {
+  flex: 0 0 auto;
+  padding: 2px 8px;
+  color: var(--dsw-alias-label-secondary);
+  font: var(--dsw-font-xxs-12);
+  white-space: nowrap;
+  background: var(--dsw-alias-interactive-bg-hover);
+  border-radius: 999px;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footerSpacer {
+  flex: 1;
+}

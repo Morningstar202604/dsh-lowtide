@@ -1,0 +1,53 @@
+/* PriceBand: 24h band — axis + 48 colored cells + now marker. Tokens only. */
+.bandWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.bandAxis {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2px;
+}
+
+.bandAxisLabel {
+  color: var(--dsw-alias-label-tertiary);
+  font: var(--dsw-font-xxs-12);
+  font-variant-numeric: tabular-nums;
+}
+
+.band {
+  display: flex;
+  gap: 1px;
+  height: 32px;
+  padding: 4px;
+  background: var(--dsw-alias-bg-layer-1);
+  border: 1px solid var(--dsw-alias-border-l1);
+  border-radius: 8px;
+}
+
+.bandCell {
+  flex: 1;
+  border-radius: 2px;
+}
+
+.bandPeak {
+  background: var(--dsw-alias-state-error-primary);
+  opacity: 0.85;
+}
+
+.bandOff {
+  background: var(--dsw-alias-state-success-primary);
+  opacity: 0.85;
+}
+
+.bandCustom {
+  background: var(--dsw-alias-state-warn-primary);
+  opacity: 0.85;
+}
+
+.bandNow {
+  outline: 2px solid var(--dsw-alias-brand-primary);
+  outline-offset: -1px;
+}

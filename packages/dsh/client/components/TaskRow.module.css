@@ -1,0 +1,98 @@
+/* TaskRow: shared queue-row styles (also used by DroppedRow). */
+.taskRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 4px 5px 4px 12px;
+  border-radius: 8px;
+  border-left: 2px solid transparent;
+}
+
+.taskRow:hover {
+  background: var(--dsw-alias-interactive-bg-hover);
+}
+
+.amber { border-left-color: var(--dsw-alias-state-warn-primary); }
+.green { border-left-color: var(--dsw-alias-state-success-primary); }
+.blue { border-left-color: var(--dsw-alias-state-business-primary); }
+.red { border-left-color: var(--dsw-alias-state-error-primary); }
+
+.taskMain {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+  cursor: pointer;
+}
+
+.taskMain:hover .taskPrompt {
+  color: var(--dsw-alias-brand-primary);
+}
+
+.taskPrompt {
+  color: var(--dsw-alias-label-primary);
+  font: var(--dsw-font-s-14);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.taskMeta {
+  color: var(--dsw-alias-label-tertiary);
+  font: var(--dsw-font-xxs-12);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rowActions {
+  display: flex;
+  gap: 2px;
+}
+
+.iconBtn {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  border: none;
+  background: none;
+  color: var(--dsw-alias-label-secondary);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.iconBtn:hover {
+  background: var(--dsw-alias-interactive-bg-hover);
+  color: var(--dsw-alias-label-primary);
+}
+
+.iconBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.iconBtn:disabled:hover {
+  background: none;
+  color: var(--dsw-alias-label-secondary);
+}
+
+/* Hard-delete (🗑): error color only as text/glyph, never as fill (§3.7). */
+.confirming {
+  color: var(--dsw-alias-state-error-primary);
+  background: var(--dsw-alias-interactive-bg-hover);
+  font-weight: 600;
+}
+
+.confirming:hover {
+  color: var(--dsw-alias-state-error-primary);
+}
+
+.droppedRow {
+  opacity: 0.75;
+}
+
+.droppedRow:hover {
+  opacity: 1;
+}

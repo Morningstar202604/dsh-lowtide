@@ -1,0 +1,47 @@
+{
+  "name": "lowtide-core",
+  "version": "0.1.1",
+  "description": "Platform-agnostic core logic for lowtide (windows/pricing/model/digest/scheduler/ledger)",
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/index.js",
+    "lib/types/**/*.d.ts"
+  ],
+  "scripts": {
+    "bundle": "tsdown && tsc -p tsconfig.build.json",
+    "watch": "tsdown --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "license": "MIT",
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "off-peak",
+    "pricing",
+    "scheduler",
+    "ledger"
+  ],
+  "author": "dsh-lowtide contributors",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KelaoHu/dsh-lowtide",
+    "directory": "packages/core"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.0",
+    "tsdown": "^0.22.2",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.8",
+    "zod": "^4.4.3"
+  }
+}

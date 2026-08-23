@@ -1,0 +1,18 @@
+/* NewTaskModal: modal shell wrapper around the shared TaskForm. */
+/* v3.2: the main modal widens (560px) so workspace/priority share a row and
+   the form breathes; the advanced window keeps the primitive's 380px width. */
+.wide {
+  width: min(560px, 100%);
+}
+
+.modalBody {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modalFooter {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}

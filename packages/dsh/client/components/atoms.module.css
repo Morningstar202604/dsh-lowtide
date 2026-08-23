@@ -1,0 +1,39 @@
+/* Atomic pieces: only §4 tokens, tabular nums on figures. */
+.money {
+  font-family: var(--ds-font-family-code);
+  font-variant-numeric: tabular-nums;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.countdown {
+  font-family: var(--ds-font-family-code);
+  font-variant-numeric: tabular-nums;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+/* ModelBadge: compact model tag in queue rows. */
+.modelBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 1px 6px;
+  border: 1px solid var(--dsw-alias-border-l3);
+  border-radius: 4px;
+  color: var(--dsw-alias-label-secondary);
+  font-family: var(--ds-font-family-code);
+  font-size: 11px;
+  line-height: 16px;
+  white-space: nowrap;
+  flex: none;
+}
+
+.modelBadgeUnknown {
+  border-color: var(--dsw-alias-state-warn-primary);
+  color: var(--dsw-alias-state-warn-primary);
+}
+
+.modelBadgeQ {
+  font-weight: 600;
+}

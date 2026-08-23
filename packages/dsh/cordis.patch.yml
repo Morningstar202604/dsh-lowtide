@@ -1,0 +1,39 @@
+# dsh-lowtide bundle layer.
+# Applied when a profile lists dsh-lowtide among dsh.profile.bundles
+# (installed via `dsh plugin --profile <name> add dsh-lowtide`).
+
+- insert:
+    - id: lowtide
+      name: dsh-lowtide
+
+# Permission presets: a row patch REPLACES the targeted row's whole config,
+# so restate the dsh base table verbatim and append the lowtide presets
+# (read/standard/trusted, all approval=never — night runs are unattended by
+# design).
+- id: permission
+  config:
+    presets:
+      read-only:
+        sandbox: read-only
+        approval: ask
+      workspace-write:
+        sandbox: workspace-write
+        approval: ask
+      danger-full-access:
+        sandbox: danger-full-access
+        approval: never
+      lt-readonly:
+        sandbox: read-only
+        approval: never
+        name: Lowtide read-only
+        description: Read-only analysis without approval prompts (lowtide).
+      lt-standard:
+        sandbox: workspace-write
+        approval: never
+        name: Lowtide standard
+        description: Workspace writes without approval prompts (lowtide).
+      lt-trusted:
+        sandbox: danger-full-access
+        approval: never
+        name: Lowtide trusted
+        description: Full file access without approval prompts (lowtide).
