@@ -134,6 +134,8 @@ lowtide 是 [DeepSeek Harness (dsh)](https://github.com/deepseek-ai/dsh) 的一�
 
 ## 安裝
 
+**一鍵安裝（預構建包）：** `dsh plugin --profile web add https://github.com/KelaoHu/dsh-lowtide/releases/latest/download/dsh-lowtide.tgz`——或按下文從源碼構建。
+
 前置：Node `^22.19 || >=24`，pnpm `11.7`。所有依賴都在公共 npm registry，不需要私有源。
 
 先裝 dsh（二選一）：桌面版去 DeepSeek 官方渠道裝 dsh Desktop；命令列版 `npm install -g @deepseek-ai/dsh`。然後在 dsh 的模型設定裡配好一個能用的模型（比如 DeepSeek 官方 API Key）——lowtide 自己不碰你的憑據。

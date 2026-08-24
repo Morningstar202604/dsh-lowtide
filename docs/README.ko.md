@@ -137,6 +137,8 @@ lowtide를 설치하면 하루가 이렇게 흘러갑니다: 낮에 떠오르는
 
 ## 설치
 
+**한 줄 설치 (사전 빌드):** `dsh plugin --profile web add https://github.com/KelaoHu/dsh-lowtide/releases/latest/download/dsh-lowtide.tgz` — 또는 아래에서 소스로 빌드.
+
 사전 요구 사항: Node `^22.19 || >=24`, pnpm `11.7`. 모든 것은 공개 npm 레지스트리에 있습니다 — 프라이빗 레지스트리가 필요 없습니다.
 
 먼저 dsh를 설치합니다(택일): DeepSeek 공식 채널의 Desktop, 또는 CLI용 `npm install -g @deepseek-ai/dsh`. 그다음 dsh 설정에서 작동하는 모델을 구성합니다(예: 공식 DeepSeek API 키) — lowtide는 당신의 자격 증명을 절대 건드리지 않습니다.

@@ -139,6 +139,8 @@ La sincronizzazione di stato usa SSE con un polling di ripiego di 4 secondi — 
 
 ## Installazione
 
+**Installazione con un comando (precompilato):** `dsh plugin --profile web add https://github.com/KelaoHu/dsh-lowtide/releases/latest/download/dsh-lowtide.tgz` — oppure compila dai sorgenti qui sotto.
+
 Prerequisiti: Node `^22.19 || >=24`, pnpm `11.7`. Tutto è sul registro pubblico npm — nessun registro privato necessario.
 
 Installa prima dsh (scegli uno): Desktop dai canali ufficiali di DeepSeek, oppure `npm install -g @deepseek-ai/dsh` per la CLI. Poi configura un modello funzionante nelle impostazioni di dsh (per esempio una chiave API ufficiale di DeepSeek) — lowtide non tocca mai le tue credenziali.

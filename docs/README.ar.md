@@ -139,6 +139,8 @@ lowtide هي إضافة لـ [DeepSeek Harness (dsh)](https://github.com/deepsee
 
 ## التثبيت
 
+**تثبيت بأمر واحد (حزمة مبنية مسبقًا):** `dsh plugin --profile web add https://github.com/KelaoHu/dsh-lowtide/releases/latest/download/dsh-lowtide.tgz` — أو ابنِ من المصدر أدناه.
+
 المتطلبات الأساسية: Node `^22.19 || >=24`، وpnpm `11.7`. كل شيء على سجل npm العام — لا حاجة لسجل خاص.
 
 ثبّت dsh أولًا (اختر واحدًا): سطح المكتب من القنوات الرسمية لـ DeepSeek، أو `npm install -g @deepseek-ai/dsh` لسطر الأوامر. ثم هيّئ نموذجًا يعمل في إعدادات dsh (مثلًا مفتاح واجهة برمجية رسمي من DeepSeek) — لا تلمس lowtide بيانات اعتمادك أبدًا.

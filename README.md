@@ -136,6 +136,8 @@ State sync uses SSE with a 4-second polling fallback — the queue moves, the UI
 
 ## Installation
 
+**One-line install (prebuilt):** `dsh plugin --profile web add https://github.com/KelaoHu/dsh-lowtide/releases/latest/download/dsh-lowtide.tgz` — or build from source below.
+
 Prerequisites: Node `^22.19 || >=24`, pnpm `11.7`. Everything is on the public npm registry — no private registry needed.
 
 First install dsh (pick one): Desktop from DeepSeek's official channels, or `npm install -g @deepseek-ai/dsh` for the CLI. Then configure a working model in dsh's settings (e.g. an official DeepSeek API key) — lowtide never touches your credentials.
