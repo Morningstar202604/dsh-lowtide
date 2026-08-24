@@ -2,7 +2,9 @@
 
 # dsh-lowtide
 
-**Metti le tue attività in coda prima di andare a letto. Svegliti con il lavoro fatto.**
+**Le attività entrano in coda nelle ore di punta e girano da sole in quelle libere.**
+
+<sub>Modalità semiautomatica o automatica, evitando le ore e i prezzi di punta dei modelli. Un plugin indispensabile per DeepSeek Harness.</sub>
 
 **Italiano** | [English](../README.md) | [简体中文](../README.zh-CN.md) | [繁體中文](../README.zh-HK.md) | [العربية](./README.ar.md) | [Deutsch](./README.de.md) | [Español](./README.es.md) | [Français](./README.fr.md) | [한국어](./README.ko.md)
 

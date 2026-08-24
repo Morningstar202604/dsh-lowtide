@@ -2,7 +2,9 @@
 
 # dsh-lowtide
 
-**Legen Sie Ihre Aufgaben vor dem Schlafengehen in die Warteschlange. Wachen Sie mit erledigter Arbeit auf.**
+**Aufgaben einreihen, wenn's teuer ist. Laufen von selbst, wenn's billig ist.**
+
+<sub>Halb- oder vollautomatisch, an den Stoßzeiten und Spitzenpreisen der Modelle vorbei. Ein Pflicht-Plugin für DeepSeek Harness.</sub>
 
 **Deutsch** | [English](../README.md) | [简体中文](../README.zh-CN.md) | [繁體中文](../README.zh-HK.md) | [العربية](./README.ar.md) | [Español](./README.es.md) | [Français](./README.fr.md) | [Italiano](./README.it.md) | [한국어](./README.ko.md)
 

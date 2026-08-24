@@ -2,7 +2,9 @@
 
 # dsh-lowtide
 
-**睡前把任務扔進隊列，醒來活兒已經幹完了。**
+**忙時排任務，閒時自動跑。**
+
+<sub>半自動、全自動兩種模式，躲開大模型的高峰時段和峰頂價格。DeepSeek Harness 必備插件。</sub>
 
 [English](./README.md) | [简体中文](./README.zh-CN.md) | **繁體中文** | [العربية](./docs/README.ar.md) | [Deutsch](./docs/README.de.md) | [Español](./docs/README.es.md) | [Français](./docs/README.fr.md) | [Italiano](./docs/README.it.md) | [한국어](./docs/README.ko.md)
 

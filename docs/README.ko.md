@@ -2,7 +2,9 @@
 
 # dsh-lowtide
 
-**잠들기 전에 작업을 큐에 넣으세요. 일어나면 완료된 작업이 기다립니다.**
+**바쁠 때 넣어 두면, 한가할 때 알아서 돌아갑니다.**
+
+<sub>반자동·완전 자동 두 가지 모드로 모델 피크 시간과 피크 요금을 피합니다. DeepSeek Harness 필수 플러그인.</sub>
 
 **한국어** | [English](../README.md) | [简体中文](../README.zh-CN.md) | [繁體中文](../README.zh-HK.md) | [العربية](./README.ar.md) | [Deutsch](./README.de.md) | [Español](./README.es.md) | [Français](./README.fr.md) | [Italiano](./README.it.md)
 

@@ -2,7 +2,9 @@
 
 # dsh-lowtide
 
-**Deja tus tareas en la cola antes de acostarte. Despierta con el trabajo terminado.**
+**Encola tareas en hora punta. Se ejecutan solas en hora valle.**
+
+<sub>Modo semiautomático o automático, esquivando las horas punta y los precios punta de los modelos. Un plugin imprescindible para DeepSeek Harness.</sub>
 
 **Español** | [English](../README.md) | [简体中文](../README.zh-CN.md) | [繁體中文](../README.zh-HK.md) | [العربية](./README.ar.md) | [Deutsch](./README.de.md) | [Français](./README.fr.md) | [Italiano](./README.it.md) | [한국어](./README.ko.md)
 

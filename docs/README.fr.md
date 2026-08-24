@@ -2,7 +2,9 @@
 
 # dsh-lowtide
 
-**Déposez vos tâches dans la file avant de dormir. Réveillez-vous avec le travail terminé.**
+**Les tâches entrent aux heures de pointe. Elles tournent seules aux heures creuses.**
+
+<sub>Mode semi-automatique ou automatique, en évitant les heures et les tarifs de pointe des modèles. Un plugin indispensable pour DeepSeek Harness.</sub>
 
 **Français** | [English](../README.md) | [简体中文](../README.zh-CN.md) | [繁體中文](../README.zh-HK.md) | [العربية](./README.ar.md) | [Deutsch](./README.de.md) | [Español](./README.es.md) | [Italiano](./README.it.md) | [한국어](./README.ko.md)
 

@@ -2,7 +2,9 @@
 
 # dsh-lowtide
 
-**ضع مهامك في قائمة الانتظار قبل النوم. استيقظ على عمل مكتمل.**
+**المهام تدخل القائمة وقت الذروة، وتعمل وحدها وقت الرخص.**
+
+<sub>وضع نصف تلقائي أو تلقائي كامل، بعيدًا عن ساعات ذروة النماذج وأسعارها. إضافة لا غنى عنها لـ DeepSeek Harness.</sub>
 
 **العربية** | [English](../README.md) | [简体中文](../README.zh-CN.md) | [繁體中文](../README.zh-HK.md) | [Deutsch](./README.de.md) | [Español](./README.es.md) | [Français](./README.fr.md) | [Italiano](./README.it.md) | [한국어](./README.ko.md)
 

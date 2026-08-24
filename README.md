@@ -2,7 +2,9 @@
 
 # dsh-lowtide
 
-**Drop your tasks in the queue before bed. Wake up to finished work.**
+**Queue tasks when it's busy. They run on their own when it's cheap.**
+
+<sub>Semi-auto or full-auto, off the model's peak hours and peak prices. A must-have plugin for DeepSeek Harness.</sub>
 
 **English** | [简体中文](./README.zh-CN.md) | [繁體中文](./README.zh-HK.md) | [العربية](./docs/README.ar.md) | [Deutsch](./docs/README.de.md) | [Español](./docs/README.es.md) | [Français](./docs/README.fr.md) | [Italiano](./docs/README.it.md) | [한국어](./docs/README.ko.md)
 
