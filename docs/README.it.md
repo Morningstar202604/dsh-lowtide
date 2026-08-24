@@ -6,6 +6,8 @@
 
 **Italiano** | [English](../README.md) | [简体中文](../README.zh-CN.md) | [繁體中文](../README.zh-HK.md) | [العربية](./README.ar.md) | [Deutsch](./README.de.md) | [Español](./README.es.md) | [Français](./README.fr.md) | [한국어](./README.ko.md)
 
+<img src="../assets/overview.png" alt="lowtide overview" width="100%">
+
 </div>
 
 > **Nota sulla lingua dell'interfaccia:** nella versione attuale, l'interfaccia (UI) del plugin lowtide è disponibile solo in **cinese semplificato** e **inglese**; il selettore di lingua all'interno dell'applicazione non include altre lingue. Questo README è una traduzione in italiano del documento originale in inglese, realizzata solo per comodità di lettura. Il funzionamento del plugin non dipende dalla lingua di questo documento.

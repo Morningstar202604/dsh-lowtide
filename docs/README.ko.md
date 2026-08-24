@@ -6,6 +6,8 @@
 
 **한국어** | [English](../README.md) | [简体中文](../README.zh-CN.md) | [繁體中文](../README.zh-HK.md) | [العربية](./README.ar.md) | [Deutsch](./README.de.md) | [Español](./README.es.md) | [Français](./README.fr.md) | [Italiano](./README.it.md)
 
+<img src="../assets/overview.png" alt="lowtide overview" width="100%">
+
 </div>
 
 > **인터페이스 언어 안내:** 현재 버전에서 lowtide 플러그인의 인터페이스(UI)는 **중국어 간체**와 **영어**만 지원합니다. 애플리케이션 내 언어 선택기에 다른 언어는 포함되어 있지 않습니다. 이 README는 영문 원본 문서를 한국어로 번역한 것으로, 읽기 편의를 위해 제공됩니다. 플러그인의 작동 방식은 이 문서의 언어와 무관합니다.

@@ -6,6 +6,8 @@
 
 **العربية** | [English](../README.md) | [简体中文](../README.zh-CN.md) | [繁體中文](../README.zh-HK.md) | [Deutsch](./README.de.md) | [Español](./README.es.md) | [Français](./README.fr.md) | [Italiano](./README.it.md) | [한국어](./README.ko.md)
 
+<img src="../assets/overview.png" alt="lowtide overview" width="100%">
+
 </div>
 
 > **ملاحظة حول لغة الواجهة:** في الإصدار الحالي، تتوفر واجهة (UI) إضافة lowtide باللغة **الصينية المبسطة** والإنجليزية **فقط**؛ لا يتضمّن محدد اللغة داخل التطبيق لغات أخرى. هذا README هو ترجمة عربية للمستند الأصلي بالإنجليزية، أُعدّت لراحتك في القراءة فقط. لا يتأثر عمل الإضافة بلغة هذا المستند.
